@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns="http://www.thymeleaf.org/">
+<head th:replace="fragments/base :: head">
+    
+</head>
+<body>
+    <header th:replace="fragments/base :: header"></header>
+	<!-- <div th:text="${request}"></div> -->
+    <section class="home" id="home">
+
+		<div class="content" data-aos="fade-up" data-aos-duration="3000">
+			<span>Bienvenue au Brasil Burger</span>
+			<h3>Différentes épices pour différents goûts 😋</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
+			<a href="#popular" class="btn">Commander maintenant</a>
+		</div>
+
+		<div class="image">
+			<img
+			 th:src="@{img/foods/home-b-img.png}" alt="" class="home-img">
+            
+		</div>
+
+	</section>
+
+	<!-- home section ends  -->
+	<section class="category">
+
+		<a href="#" class="box">
+			<img th:src="@{img/foods/cat-1.png}" alt="">
+			<h3>combo</h3>
+		</a>
+
+		<a href="#" class="box">
+			<img th:src="@{img/foods/cat-2.png}" alt="">
+			<h3>pizza</h3>
+		</a>
+
+		<a href="#" class="box">
+			<img th:src="@{img/foods/cat-3.png}" alt="">
+			<h3>burger</h3>
+		</a>
+
+
+		<a href="#" class="box">
+			<img th:src="@{img/foods/cat-6.png}" alt="">
+			<h3>coffee</h3>
+		</a>
+
+	</section>
+	<section class="about" id="about">
+
+		<div class="image" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1400">
+			<img  th:src="@{img/foods/i153782-burger-largejpg-removebg-preview.png}" alt="">
+		</div>
+
+		<div class="content" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+			<span>Pourquoi nous choisir?</span>
+			<h3 class="title">Qu'est-ce qui rend notre nourriture délicieuse!</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ut explicabo, numquam iusto est a ipsum assumenda tempore esse corporis?</p>
+			<a href="#" class="btn">voir plus</a>
+			<div class="icons-container">
+				<div class="icons">
+					<img th:src="@{img/foods/serv-1.png}" alt="">
+					<h3>livraison rapide</h3>
+				</div>
+				<div class="icons">
+					<img th:src="@{img/foods/serv-2.png}"  alt="">
+					<h3>nourriture fraîche</h3>
+				</div>
+				<div class="icons">
+					<img th:src="@{img/foods/serv-3.png}"  alt="">
+					<h3>Meilleure Qualité</h3>
+				</div>
+				<div class="icons">
+					<img th:src="@{img/foods/serv-4.png}" alt="">
+					<h3>24/7 support</h3>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<!-- popular section starts  -->
+
+	<section class="popular" id="popular">
+
+		<div class="heading">
+			<span>Nourriture populaire</span>
+			<h3>Nos menus spéciaux</h3>
+		</div>
+	
+		<form  action="#" class=" form-filtre">
+			
+				<!-- <h2 class="text-white float-right">Filtrer les produits par : </h2> -->
+		
+			<div class="row float-right" >
+			  <div class="col-4">
+				<div class="mb-3">
+					<label for="" class="form-label">Type</label>
+					<select class="form-control form-select" name="type" id="select-type">
+					  <option>Selectionnez</option>
+					  <option value="burger" th:href="@{/catalogue/type/{type}(type=burger)}">Burger</option>
+					  <option value="menu" th:href="@{/catalogue/type/{type}(type=menu)}">Menu</option>
+					</select>
+				  </div>
+			  </div>
+			  <div class="col-4">
+				  <div class="mb-3">
+					<label for="" class="form-label">Prix</label>
+					<input type="text"
+					  class="form-control" name="prix" id="prix" aria-describedby="helpId" placeholder="saisir le prix">
+				  </div>
+				
+			  </div>
+			</div>
+		  </form>
+		
+		<div class="box-container">
+			
+				<div class="box" th:each="b : ${foods}" data-aos="fade-up" data-aos-duration="3000">
+					<div class="image">
+						<img th:src="@{${'img/foods/'+b.image}}" class="animate__backInUp" alt="">
+					</div>
+					<div class="content">
+
+						<h3 th:text="${b.nom}"></h3>
+
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star-half-alt"></i>
+							<span>
+								(50)
+							</span>
+						</div>
+						
+						<div th:text="${b.prix}+' '+ FCFA" class="price">
+							FCFA
+						</div>
+
+						<a th:href="@{/catalogue/details/{id}(id=${b.id})}" class="btn">voir details</a>
+						<a href="" id="" data-id="" data-nom="" data-image="" data-prix="" data-type="" class="btn add-panier">
+							<i class="fa-solid fa-cart-plus"></i>
+							ajouter
+						</a>
+					</div>
+				</div>
+			
+
+
+		</div>
+		<div class="loader-spiner">
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+		</div>
+
+		
+	</section>
+    <div th:replace="fragments/base :: footer"></div>
+	<script th:src="@{js/catalogue.js}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</body>
+</html>

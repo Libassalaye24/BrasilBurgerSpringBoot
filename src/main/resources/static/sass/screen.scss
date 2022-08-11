@@ -1,0 +1,279 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+ @import "compass/reset";
+ @import "partials/menu";
+ @import "partials/burgerDesign";
+ @import "partials/cadreShadow";
+ @import "partials/form";
+ @import "partials/itemsPaginate.scss";
+ /* @import "partials/menu";
+ @import "partials/cadreShadow";
+ @import "partials/burgerDesign";
+ @import "partials/variables";
+ @import "partials/btn";
+ @import "partials/form";
+ @import "partials/itemsPaginate.scss"; */
+ /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,500&family=Roboto+Mono&display=swap');
+  */
+ 
+ @import "partials/variables";
+ 
+  .product-container{
+     background-color: $product-container-color;
+     .card-product{
+         background-color: #fff;
+         .card-body{
+             border-radius: 16px;
+         }
+         img{
+             cursor: pointer;
+         }
+         &:hover{
+             background-color: $colorPrimary;
+             color: #000;
+             .btn-primary{
+                 
+                     background-color: #fff;
+                     border: $colorPrimary;
+                     color: $colorPrimary;
+                 
+             }
+             .card-title{
+                 color: #fff;
+             }
+             .card-text{
+                 color: #000;
+             }
+         }
+     }
+  }
+  .card{
+      border: none;
+  }
+ 
+  .btn-primary{
+      background-color: $colorPrimary;
+      border: $colorPrimary;
+      &:hover{
+         background-color: $colorPrimary;
+         border: $colorPrimary;
+      }
+  }
+  @media (min-width: 800px) {
+     .card-product{
+         width: 18rem;
+        
+     }
+    
+ }
+ 
+     .nav-item{
+         a{
+              color: $colorPrimary;
+         }
+        
+     }
+ 
+ .navbar-brand{
+     background-color: $colorPrimary;
+     padding: 4px;
+     color: #fff;
+ }
+ 
+ 
+ ol,ul,li,a
+ {
+     list-style: none;
+     text-decoration: none;
+ }
+ .action{
+     color: #000;
+     .fa-archive{
+         color: $colorRed;
+     }
+     .fa-edit{
+         color: $colorYellow;
+     }
+     &:hover
+     {
+         color: #000;
+     }
+ }
+ .bc-primary{
+     background-color: $colorPrimary;
+ }
+ .c-primary{
+     color: $colorPrimary;
+ }
+ .c-green{
+     color: green;
+ }
+ .c-edit{
+     color: $colorYellow;
+ }
+ .bc-secondary{
+     background-color: $product-container-color;
+     color: $colorPrimary;
+ }
+ table{
+     tr{
+         border-bottom: $product-container-color;
+         
+     }
+     .thbottom{
+         padding: 1%;
+     }
+      tr:last-child {
+         border-bottom: $colorPrimary;
+     }
+     tr:nth-child(even) {
+         background-color: $product-container-color;
+     }
+     
+      
+ }
+ nav .pagination{
+     .active{
+         background-color: $colorPrimary;
+         color: #fff;
+         &:hover{
+             background-color: $colorPrimary;
+             color: #fff;
+         }
+     }
+     .active2{
+         background-color: $product-container-color;
+         color: $colorPrimary;
+         border: $colorPrimary 2px solid;
+         &:hover{
+             background-color: $product-container-color;
+             color:$colorPrimary;
+         }
+     }
+     .notactive{
+         background-color: #fff;
+         color: $colorPrimary;
+         &:hover{
+             background-color: #fff;
+             color: $colorPrimary;
+         }
+     }
+ }
+ 
+ 
+ 
+ 
+ .card{
+     border: none;
+ }
+ body{
+     font-size: 18px;
+ }
+ 
+ .loader-spiner{
+   /*   opacity: 0;
+     display: flex;
+     position: fixed;
+     bottom: 50px;
+     transition: opacity 0.7s ease-in; */
+     display: flex;
+     background-color: $product-container-color;
+ }
+ 
+ .loader.show{
+     opacity: 1;
+ }
+ 
+ /* .circle{
+     background-color: red;
+     width: 10px;
+     height: 10px;
+     margin: 5px;
+     border-radius: 50%;
+ }
+ 
+ .circle:nth-of-type(2){
+     animation-delay:0.3s;
+ }
+ 
+ .circle:nth-of-type(3){
+     animation-delay:0.5s;
+ }
+ 
+ 
+ 
+ .circle:nth-child(1) {
+     background-color: #fff;
+   }
+   .circle:nth-child(2) {
+     background-color: #fff;
+   }
+   .circle:nth-child(3) {
+     background-color: #fff;
+   }
+ 
+   
+  
+   
+ 
+    */
+   @keyframes animateLoader3 {
+     0% {
+       transform: scale(1);
+       width: 5px;
+         height: 5px;
+     }
+   
+     50%{
+         transform: scale(1.5);
+         width: 5px;
+         height: 5px;    
+     }
+     75% {
+       transform: scale(2);
+       width: 5px;
+         height: 5px;
+     }
+   
+     80%,
+     100% {
+       opacity: 0.5;
+       width: 5px;
+         height: 5px;
+     }
+   }
+   
+ 
+ @keyframes animate{
+     0%,100%{
+         transform: translateY(0px);
+         background-color: red;
+         width: 5px;
+         height: 5px;
+         animation: animate__rotateIn;
+     }
+     30%{
+         transform: translateY(-1px);
+         background-color: rgb(169, 0, 0);
+         width: 10px;
+         height: 10px;
+     }
+     50%{
+         transform: translateY(-1px);
+         background-color: rgb(7, 9, 130);
+         width: 15px;
+         height: 15px;
+     }
+     80%{
+         transform: translateY(-1px);
+         background-color: rgb(0, 145, 24);
+         width: 10px;
+         height: 10px;
+     }
+     
+ 
+ }
+ 
