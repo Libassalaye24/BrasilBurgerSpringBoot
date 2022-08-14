@@ -6,11 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.brasil.burger.brasilburger.fixtures.BurgerFixture;
+import com.brasil.burger.brasilburger.fixtures.FriteFixture;
+import com.brasil.burger.brasilburger.fixtures.TailleFixture;
 
 import net.bytebuddy.asm.Advice.This;
 
 @SpringBootApplication
-public class BrasilburgerApplication{
+public class BrasilburgerApplication implements CommandLineRunner{
 	
 	
 	public static void main(String[] args) {
@@ -22,13 +24,18 @@ public class BrasilburgerApplication{
 
 	/* @Autowired
 	private BurgerFixture burgerFixture;
-
+ */
+	@Autowired
+	private FriteFixture friteFixture;
+	@Autowired
+	private TailleFixture tailleFixture;
 
 	@Override
 	public void run(String... args) throws Exception {
-		burgerFixture.run();
+		/* friteFixture.run();
+		tailleFixture.run(); */
 		
-	} */
+	}
 	
 
 	

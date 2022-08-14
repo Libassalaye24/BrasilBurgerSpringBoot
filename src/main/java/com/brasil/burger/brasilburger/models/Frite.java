@@ -24,6 +24,7 @@ public class Frite {
     private String quantiteStock;
     private Integer prix;
     private String image;
+    private String type;
 
     @OneToMany(mappedBy = "frite")
     private List<CommandeFrites> commandeFrites = new ArrayList<>();

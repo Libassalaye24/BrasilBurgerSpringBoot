@@ -45,5 +45,15 @@ public class FoodService {
         }
        
     }
+    public Menu addMenu(Menu menu){
+        try {
+            menuRepository.save(menu);
+            return menu;
+        } catch (Exception e) {
+           log.severe(e.getLocalizedMessage());
+           throw e;
+        }
+       
+    }
    
 }

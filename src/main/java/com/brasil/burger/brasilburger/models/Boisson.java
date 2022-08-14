@@ -27,7 +27,8 @@ public class Boisson {
     @ManyToOne
     @JoinColumn(name = "taille" , referencedColumnName = "id")
     private Taille taille;
-
+    private String type;
+    private String image;
     @OneToMany(mappedBy = "boisson")
     private List<CommandeBoissons> commandeBoissons = new ArrayList<>();
 
