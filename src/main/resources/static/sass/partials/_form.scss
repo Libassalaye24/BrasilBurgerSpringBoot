@@ -245,11 +245,7 @@ form .row {
 
   border-bottom: $colorPrimary 3px solid;
   outline: 0;
-  option {
-    &:hover {
-      background-color: $color2;
-    }
-  }
+  
 }
 .etu select {
   @extend %form-control;

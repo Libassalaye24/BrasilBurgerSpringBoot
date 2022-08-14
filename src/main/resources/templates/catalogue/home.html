@@ -5,7 +5,7 @@
 </head>
 <body>
     <header th:replace="fragments/base :: header"></header>
-	<!-- <div th:text="${request}"></div> -->
+
     <section class="home" id="home">
 
 		<div class="content" data-aos="fade-up" data-aos-duration="3000">
@@ -116,8 +116,12 @@
 		  </form>
 		
 		<div class="box-container">
+			<div th:if="${typeSelected == 'menu'}">
+				menu
+			</div>
 			
-				<div class="box" th:each="b : ${foods}" data-aos="fade-up" data-aos-duration="3000">
+			
+				<div class="box" th:each="b : ${foods}" >
 					<div class="image">
 						<img th:src="@{${'img/foods/'+b.image}}" class="animate__backInUp" alt="">
 					</div>
@@ -136,7 +140,7 @@
 							</span>
 						</div>
 						
-						<div th:text="${b.prix}+' '+ FCFA" class="price">
+						<div class="price">
 							FCFA
 						</div>
 
@@ -160,7 +164,9 @@
 		
 	</section>
     <div th:replace="fragments/base :: footer"></div>
-	<script th:src="@{js/catalogue.js}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script th:src="@{js/catalogue.js}"></script>
+	
+	
 </body>
 </html>
