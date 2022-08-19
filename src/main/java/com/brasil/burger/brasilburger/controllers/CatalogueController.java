@@ -24,6 +24,24 @@ public class CatalogueController {
     @Autowired
     private FoodService foodService;
 
+    @GetMapping("/catalogue/burger")
+    public ResponseEntity<?> getAllBurgers(){
+        List<Burger> burgers = foodService.findAllBurgers();
+        Map<String, List<Burger>> map = new HashMap<>();
+        map.put("burgers", burgers);
+        return ResponseEntity.ok(map);
+       
+    }
+    /* @GetMapping("/catalogue/menu")
+    public Class<ResponseEntity> getAllMenus(){
+        List<Menu> menus = foodService.findAllMenus();
+       
+        Map<String, List<Menu>> map = new HashMap<>();
+        map.put("menus", menus);
+        return ResponseEntity.class;
+       
+    } */
+    
     @GetMapping({ "/", "/catalogue" })
     public String viewCatalogue(Model model, HttpServletRequest request) {
         // System.out.println(request.getSession().getAttribute("type"));

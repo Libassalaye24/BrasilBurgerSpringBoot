@@ -54,7 +54,7 @@
         <a th:href="@{/catalogue}">Accueil</a>
        <!--  <a class="" href="">Mes Commandes</a>
         <a class="a" href="">Food</a> -->
-       <!--  <a class="a" th:href="@{catalogue/}">Food</a> -->
+        <a class="a" th:href="@{/food-liste}">Food</a>
         <a class="a" th:href="@{/complement-liste}">Complements</a>
 				<!-- <a class="a" href="">Commandes</a>
 				<a class="a" href="">Tableau de bord</a> -->
@@ -240,13 +240,12 @@
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       <script>
      
         AOS.init();
-        $( "#dropdown" ).select2({
-            theme: "bootstrap"
-        });
+      
         // In your Javascript (external .js resource or <script> tag)
      
       </script>

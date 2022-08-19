@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head">
+   
+  </head>
+  <body>
+    <!-- header section starts  -->
+
+    <header id="header none" class="header" th:replace="fragments/base :: header">
+     
+    </header>
+
+    <!-- header section ends  -->
+
+    <!-- liste section -->
+    <section class="popular" id="popular">
+
+        <div class="heading">
+            <span>Liste des produits</span>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-8 ">
+                <a name="" id="" style="margin-bottom: -51px;" class="btn" th:href="@{/food-add}" role="button">Ajouter <i class="fas fa-plus "></i></a>
+            </div>
+            <div class="col-md-4 ">
+                <div
+                    class="form-filtre ">
+                     <form method="POST" action=""> 
+                    
+                        <label class="mb-2">Filter les produits : </label>
+                        <select class="form-select" id="select-etat dropdown" aria-label="Default select example">
+                            <option value="encours"  data-path="">par Type</option>
+                            <option value="valider"   data-path="">menu</option>
+                            <option value="annuler"  data-path="">burger</option>
+                        </select>
+                    </div>
+                   
+                     </form> 
+                </div>
+        </div>
+        <div class="div-content" style="overflow-x: auto;">
+            <table class="content-table">
+                <a disabled class="btn" id="check-all">Tout cocher
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </a>
+                <a id="decheck-all" disabled class="btn" style="margin-left:2%">Tout decocher</a>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>image</th>
+                        <th>Nom</th>
+                        <th>Prix(FCFA)</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody >
+
+                  
+                        <tr th:each="b : ${burgers}">
+                            <td>
+                                
+                                    <input type="checkbox"
+                                     name="tabChecks[]" value="" class="pay-check check-one">
+                                
+                            </td>
+                            
+                            <td>
+                                <img th:src="@{/img/foods/food-4.png}" class="img-fluid rounded-top" alt="food" style="width:55px;height:55px">
+                            </td>
+                            <td th:text="${b.nom}"></td>
+                            <td th:text="${b.prix}"></td>
+                            <td th:text="${b.type}"></td>
+                            <td>
+                               
+                                    <a name="" id="" class="btn2" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a name="" id="" class="btn2" href="#" role="button"><i class="fa-solid fa-box-archive"></i></a>
+                               
+                            </td>
+
+                        </tr>
+                  
+                    
+                </tbody>
+
+
+            </table>
+        </div>
+</form>
+    
+</section>
+    <!-- end liste section -->
+    <script th:src="@{js/menu.js}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

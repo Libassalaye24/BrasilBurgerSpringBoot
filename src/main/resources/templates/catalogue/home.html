@@ -115,19 +115,15 @@
 			</div>
 		  </form>
 		
-		<div class="box-container">
-			<div th:if="${typeSelected == 'menu'}">
-				menu
-			</div>
-			
-			
-				<div class="box" th:each="b : ${foods}" >
+		<div class="box-container" id="food-container">
+
+				<div class="box" >
 					<div class="image">
-						<img th:src="@{${'img/foods/'+b.image}}" class="animate__backInUp" alt="">
+						<img th:src="@{${'img/foods/food-4.png'}}" class="animate__backInUp" alt="">
 					</div>
 					<div class="content">
 
-						<h3 th:text="${b.nom}"></h3>
+						<h3 >nom</h3>
 
 						<div class="stars">
 							<i class="fas fa-star"></i>
@@ -141,10 +137,10 @@
 						</div>
 						
 						<div class="price">
-							FCFA
+						prix	FCFA
 						</div>
 
-						<a th:href="@{/catalogue/details/{id}(id=${b.id})}" class="btn">voir details</a>
+						<a href="" class="btn">voir details</a>
 						<a href="" id="" data-id="" data-nom="" data-image="" data-prix="" data-type="" class="btn add-panier">
 							<i class="fa-solid fa-cart-plus"></i>
 							ajouter

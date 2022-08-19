@@ -48,13 +48,10 @@ public class ComplementController {
         return "complement/add";
     }
 
-    @PostMapping("/complement-add")
-    public String addComplement(@ModelAttribute("boisson") Boisson boisson,@RequestParam("file") MultipartFile file) throws IOException {
-                System.out.println(" file = " + file);
-                System.out.println(" ======");
-                System.out.println(boisson.getImage());
+    @PostMapping("/complement-add-boisson")
+    public String addComplementBoisson(@ModelAttribute("boisson") Boisson boisson,@RequestParam("file") MultipartFile file) throws IOException {
+              
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-      
         ///
         String uploadDir = "src/main/resources/static/img/uploads/" + fileName;
         //Path uploadPath = Paths.get(uploadDir);
@@ -63,6 +60,21 @@ public class ComplementController {
         complementService.addBoisson(boisson);
         ComplementsService.saveFile(uploadDir, fileName, file);
         //
+        return "redirect:/complement-liste";
+    }
+
+    @PostMapping("/complement-add-frite")
+    public String addComplementFrite(@ModelAttribute("frite") Frite frite,@RequestParam("file") MultipartFile file) throws IOException {
+               
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String uploadDir = "src/main/resources/static/img/uploads/" + fileName;
+       
+        frite.setType("frite");
+        frite.setImage(fileName);
+        complementService.addFrite(frite);
+
+        ComplementsService.saveFile(uploadDir, fileName, file);
+
         return "redirect:/complement-liste";
     }
 

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head"> </head>
+  <body>
+    <!-- header section starts  -->
+    <header
+      id="header none"
+      class="header"
+      th:replace="fragments/base :: header"
+    ></header>
+    <!-- header section end  -->
+    <!-- start modal -->
+    <div class="body">
+      <div class="container">
+        <div class="card card-add p-5">
+          <!-- form 1 burger -->
+          <form
+            id="form"
+            class="needs-validation"
+            th:object="${burger}"
+            novalidate
+          >
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="" class="form-label">Type</label>
+                  <select
+                    class="form-control"
+                    th:field="*{type}"
+                    onclick="handleClick(this)"
+                    name=""
+                    id="type"
+                  >
+                    <option value="0">Veillez selectioner le type</option>
+                    <option value="burger">Burger</option>
+                    <option value="menu">Menu</option>
+                  </select>
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="" class="form-label">Nom</label>
+                  <input
+                    type="text"
+                    th:field="*{nom}"
+                    class="form-control"
+                    name=""
+                    id="nom"
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="" class="form-label">Description</label>
+                  <input
+                    type="text"
+                    th:field="*{description}"
+                    class="form-control"
+                    name=""
+                    id="description"
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="" class="form-label">Prix</label>
+                  <input
+                    th:field="*{prix}"
+                    type="number"
+                    name=""
+                    id="prix"
+                    class="form-control"
+                    placeholder=""
+                    aria-describedby="helpId"
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3" id="parent">
+                  <label for="" class="form-label">Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="file"
+                    id="image"
+                    placeholder=""
+                    aria-describedby="fileHelpId"
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <a
+                  type="button"
+                  th:href="@{/food-liste}"
+                  class="btn float-start"
+                  >Annuler</a
+                >
+              </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn float-end">Valider</button>
+              </div>
+            </div>
+          </form>
+          <!-- form1 burger end -->
+
+          <!-- form 2 menu start -->
+
+          <form
+            id="form2"
+            th:object="${menu}"
+            style="display: none"
+            class="needs-validation"
+            novalidate
+          >
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="" class="form-label">Type</label>
+                  <select
+                    class="form-control"
+                    th:field="*{type}"
+                    onclick="handleClick(this)"
+                    name=""
+                    id="type"
+                  >
+                    <option value="0">Veillez selectioner le type</option>
+                    <option value="burger">Burger</option>
+                    <option selected="selected" value="menu">Menu</option>
+                  </select>
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="" class="form-label">Nom</label>
+                  <input
+                    type="text"
+                    th:field="*{nom}"
+                    class="form-control"
+                    name=""
+                    id="nom"
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="" class="form-label">Description</label>
+                  <input
+                    type="text"
+                    th:field="*{description}"
+                    class="form-control"
+                    name=""
+                    id="description"
+                    aria-describedby="helpId"
+                    placeholder=""
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="" class="form-label">Burgers</label>
+                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
+                    <option value="AL">Alabama</option>
+                      ...
+                    <option value="WY">Wyoming</option>
+                  </select>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3" id="parent">
+                  <label for="" class="form-label">Image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    name="file"
+                    id="image"
+                    placeholder=""
+                    aria-describedby="fileHelpId"
+                  />
+                  <div
+                    id="validationServerUsernameFeedback"
+                    class="invalid-feedback"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <a
+                  type="button"
+                  th:href="@{/food-liste}"
+                  class="btn float-start"
+                  >Annuler</a
+                >
+              </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn float-end">Valider</button>
+              </div>
+            </div>
+          </form>
+          <!-- form 2 menu end  -->
+        </div>
+      </div>
+    </div>
+    <!-- end modal -->
+    <!-- footer -->
+    <script th:src="@{js/menu.js}"></script>
+    <script th:src="@{js/food.js}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"></script>
+
+    <!-- footer -->
+    <script>
+        $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+      $("#form").on("submit", function (e) {
+        var nom = $("#nom").val();
+        var description = $("#description").val();
+        var prix = $("#prix").val();
+        var image = $("#image").val();
+        var type = $("#type").val();
+
+        e.preventDefault();
+        var $form2 = $(this);
+        var formData = new FormData(this);
+        if (
+          nom != "" &&
+          prix != "" &&
+          type != "" &&
+          image != "" &&
+          description != ""
+        ) {
+          $.ajax({
+            type: "POST",
+            url: "burger-add", //process to mail
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function () {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Burger ajoute avec succes",
+                background: "#000",
+                color: "#fff",
+                showConfirmButton: true,
+                confirmButtonColor: "#FFD800",
+                confirmButtonText: "OK!",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "food-liste";
+                }
+              });
+            },
+          });
+        }
+      });
+      //
+
+      /*       $('#form2').on('submit', function(e) {
+          var prix = $('#prix');
+          var libelle = $('#libelle').val();
+          var type2 = $('#type2').val();
+          var imageF = $('#imageF').val();
+          var quantiteF = $('#quantiteF').val();
+        //  alert(true)
+          e.preventDefault(); 
+          var $form2 = $(this);
+          var formData = new FormData(this);
+         
+            if ( libelle != "" && type2 != "" && imageF != "" && quantiteF != "") {
+              
+           
+              $.ajax({
+              type: "POST",
+              url: "complement-add-frite", //process to mail
+              data: formData,
+              mimeType: "multipart/form-data",
+              contentType: false,
+              cache: false,
+              processData: false,
+              success: function(){
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Complement ajoute avec succes',
+                  background : "#000",
+                  color : "#fff",
+                  showConfirmButton: true,
+                  confirmButtonColor: '#FFD800',
+                  confirmButtonText: 'OK!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      window.location.href = "complement-liste"
+                  }
+                })
+              
+              }
+             });
+            }
+  
+      }); */
+    </script>
+  </body>
+</html>

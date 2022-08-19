@@ -1,19 +1,19 @@
  // form 1 boisson
  const form = document.querySelector("form");
  const image = document.getElementById("image");
- const quantite = document.getElementById("quantite");
- const taille = document.getElementById("taille");
- const marque = document.getElementById("marque");
+ const prix = document.getElementById("prix");
+ const description = document.getElementById("description");
+ const nom = document.getElementById("nom");
  const type = document.getElementById("type");
  //
  //form  2 frite
 
- const form2 = document.getElementById("form2")
+/*  const form2 = document.getElementById("form2")
  const imageFrite = document.getElementById("imageF");
  const quantiteFrite = document.getElementById("quantiteF");
  const prix = document.getElementById("prix");
  const libelle = document.getElementById("libelle");
- const type2 = document.getElementById("type2");
+ const type2 = document.getElementById("type2"); */
  
  //
  
@@ -117,10 +117,10 @@
  }
  
  function handleClick(type) {
-   if (type.value === "boisson") {
+   if (type.value === "burger") {
     document.getElementById("form2").style.display = "none";
     document.getElementById("form").style.display = "block";
-   } else if (type.value === "frite" ) {
+   } else if (type.value === "menu" ) {
      document.getElementById("form2").style.display = "block";
      document.getElementById("form").style.display = "none";
    }/*  else if (type.value === "complement") {
@@ -133,11 +133,12 @@
  //Even listeners--------------------------------------------------------
  //type.addEventListener("click", handleClick(type));
  form.addEventListener("submit", function (e) {
+  
    // var nb = CheckNumberMatch(nbrEtage);
   // e.preventDefault();
    
    isValid = [];
-   checkRequired([image,quantite,taille,marque,type]);
+   checkRequired([image,prix,description,type,nom]);
   
    
    //console.log(isValid); 
@@ -151,7 +152,7 @@
  });
  
 
- form2.addEventListener("submit", function (e) {
+ /* form2.addEventListener("submit", function (e) {
   // var nb = CheckNumberMatch(nbrEtage);
   e.preventDefault();
   
@@ -167,4 +168,4 @@
   }
 
  
-});
+}); */

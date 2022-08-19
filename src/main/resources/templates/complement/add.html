@@ -142,11 +142,11 @@
             <div class="row mb-3">
               <div class="col-md-12">
                 <div class="mb-3">
-                  <label for="" class="form-label">City</label>
-                  <select class="form-control" name="" id="type">
-                    <option value="0" >Type</option>
-                    <option value="boisson">Boisson</option>
-                    <option value="frite">Frite</option>
+                  <label for="" class="form-label">Type</label>
+                  <select class="form-control" onclick="handleClick(this)" name="" id="type2">
+                    <option value="0" >Veillez selectionner </option>
+                    <option  value="boisson">Boisson</option>
+                    <option selected="selected" value="frite">Frite</option>
                   </select>
                   <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     
@@ -159,28 +159,34 @@
                 <div class="mb-3">
                   <label for="" class="form-label">Libelle</label>
                   <input
+                    th:field="*{libelle}"
                     type="text"
                     name=""
-                    id=""
+                    id="libelle"
                     class="form-control "
                     placeholder=""
                     aria-describedby="helpId"
                   />
-                 
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    
+                  </div>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
                   <label for="" class="form-label">Prix</label>
                   <input
+                    th:field="*{prix}"
                     type="text"
                     name=""
-                    id=""
+                    id="prix"
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
                   />
-                 
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,10 +196,10 @@
                 <div class="mb-3">
                   <label for="" class="form-label">Quantite en Stcok</label>
                   <input
-                   
+                    th:field="*{quantiteStock}"
                     type="number"
                     name=""
-                    id="quantite"
+                    id="quantiteF"
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
@@ -211,7 +217,7 @@
                     type="file"
                     class="form-control "
                     name="file"
-                    id="image"
+                    id="imageF"
                     placeholder=""
                     aria-describedby="fileHelpId"
                   />
@@ -266,7 +272,52 @@
          
             $.ajax({
             type: "POST",
-            url: "complement-add", //process to mail
+            url: "complement-add-boisson", //process to mail
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(){
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Complement ajoute avec succes',
+                background : "#000",
+                color : "#fff",
+                showConfirmButton: true,
+                confirmButtonColor: '#FFD800',
+                confirmButtonText: 'OK!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "complement-liste"
+                }
+              })
+            
+            }
+           });
+          }
+
+    });
+    //
+
+    $('#form2').on('submit', function(e) {
+        var prix = $('#prix');
+        var libelle = $('#libelle').val();
+        var type2 = $('#type2').val();
+        var imageF = $('#imageF').val();
+        var quantiteF = $('#quantiteF').val();
+      //  alert(true)
+        e.preventDefault(); 
+        var $form2 = $(this);
+        var formData = new FormData(this);
+       
+          if ( libelle != "" && type2 != "" && imageF != "" && quantiteF != "") {
+            
+         
+            $.ajax({
+            type: "POST",
+            url: "complement-add-frite", //process to mail
             data: formData,
             mimeType: "multipart/form-data",
             contentType: false,
