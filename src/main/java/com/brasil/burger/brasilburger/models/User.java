@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -27,5 +29,9 @@ public class User implements Serializable{
     protected String prenom;
     protected String email;
     protected String password;
-    protected String role;
+    
+    @ManyToOne
+    @JoinColumn(name = "role" , referencedColumnName = "id")
+    protected Role role ;
+
 }

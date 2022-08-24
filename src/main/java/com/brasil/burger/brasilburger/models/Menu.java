@@ -25,14 +25,15 @@ public class Menu {
     private String description;
     private String type;
     private String image;
+    
 
-    @ManyToMany
-    @JoinTable(name = "menuBurgers",
-             joinColumns = @JoinColumn(name = "menu_id"),
-             inverseJoinColumns = @JoinColumn(name = "burger_id"))
-    private List<Burger> burgers = new ArrayList<>();
+    @OneToMany(mappedBy = "menu")
+    private List<MenusBurgers> menusBurgers = new ArrayList<>();
 
     @OneToMany(mappedBy = "menu")
     private List<MenuTaille> menuTailles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "menu")
+    private List<MenusFrites> menuFrites = new ArrayList<>();
 
 }

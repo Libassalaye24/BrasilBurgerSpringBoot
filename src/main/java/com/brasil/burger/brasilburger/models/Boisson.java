@@ -29,6 +29,7 @@ public class Boisson {
     private Taille taille;
     private String type;
     private String image;
+    private String libelle;
     @OneToMany(mappedBy = "boisson")
     private List<CommandeBoissons> commandeBoissons = new ArrayList<>();
 

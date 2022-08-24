@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head">
+   
+  </head>
+  <body>
+    <!-- header section starts  -->
+
+    <header id="header none" class="header" th:replace="fragments/base :: header">
+     
+    </header>
+
+    <!-- header section ends  -->
+    
+    <style>
+       
+	   .retour {
+			color: #FFD800;
+		}
+		.retour:hover{
+			color: #FFD800;
+		}
+		.box .fa-times {
+			cursor: pointer;
+		}
+		.fa-plus {
+			color: white;
+		}
+		.fa-minus {
+			color: white;
+		}
+        body{
+            background-color: #212529;
+        }
+    </style>
+	<section class="shopping-cart-container active">
+		
+		
+		
+		<div
+
+			class="products-container">
+			<a class="retour" th:href="@{/catalogue}">
+				<i class="fa-solid fa-reply fa-1x"></i>
+				retour
+			</a>
+			<h3 class="title">
+                Panier
+			</h3>
+			
+				<div id="panier-container" class="box-container initdata">
+
+						<!-- <div class="box">
+							
+							<a class="a-remove" href="">
+								<i class="fas fa-times"></i>
+							<a/>
+
+								<img th:src="@{img/foods/food-4.png}" alt="">
+								<div class="content">
+									<h3>Nom food</h3>
+									<span>
+										quantite :
+									</span>
+									<a href="" class="btn-panier">
+										<i class="fa fa-plus" aria-hidden="true"></i>
+									</a>
+									<span class="number">1</span>
+									<a href="" class="btn-panier">
+										<i class="fa fa-minus" aria-hidden="true"></i>
+									</a>
+									<br>
+									<span>
+										prix :
+									</span>
+
+									<span class="price">
+										1200 fcfa
+									</span>
+								
+							
+								</div>
+							</div> -->
+
+						
+
+
+					</div>
+					
+
+				</div>
+
+				
+				<div class="cart-total">
+
+					<h3 class="title">
+						total panier
+					</h3>
+
+					<div class="box">
+
+						<h3  style="color: #666;" class="subtotal">
+							subtotal :
+							<span id="subtotal">
+								FCFA
+							</span>
+						</h3>
+						<h3 style="color: #666;" class="total">
+							total :
+							<span id="total">
+								FCFA
+							</span>
+						</h3>
+
+						<a href="" class="btn " style="border:none;background-color: #FFD800;color: black;">Finalise ta commande</a>
+
+					</div>
+				</div>
+			
+
+		</section>
+
+
+</section>
+<!-- end liste section -->
+<script th:src="@{js/menu.js}"></script>
+<script th:src="@{js/catalogue.js}"></script>
+<script th:src="@{js/testPanier.js}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

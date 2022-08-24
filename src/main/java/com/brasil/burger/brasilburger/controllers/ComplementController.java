@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -85,8 +86,20 @@ public class ComplementController {
         List<Frite> frites = complementService.findAllFrites();
         model.addAttribute("boissons", boissons);
         model.addAttribute("frites", frites);
-
+       
         return "complement/liste";
     }
 
+    @GetMapping("/complement-archive/{idType}")
+    public String archiveComplement(@PathVariable String idType){
+        String[] tab = idType.split("-");
+        Long id = Long.parseLong(tab[0]);
+        String type = tab[1];
+
+        if (type == "frite") {
+            Frite frite = complementService.findFriteById(id);
+            complementService.addFrite(frite);
+        }
+        return "redirect:/complement-liste";
+    }
 }

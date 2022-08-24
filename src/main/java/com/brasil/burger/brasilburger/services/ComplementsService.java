@@ -51,6 +51,7 @@ public class ComplementsService {
 
         }
     }
+  
     public List<Frite> findAllFrites(){
         return friteRepository.findAll();
     }

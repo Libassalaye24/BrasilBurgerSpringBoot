@@ -17,7 +17,7 @@ public class Marque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
-
+    
     @OneToMany(mappedBy = "marque")
     private List<Boisson> boissons;
 }

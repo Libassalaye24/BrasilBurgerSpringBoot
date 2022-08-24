@@ -138,7 +138,7 @@
   // e.preventDefault();
    
    isValid = [];
-   checkRequired([image,prix,description,type,nom]);
+   checkRequired([image,prix,description,nom]);
   
    
    //console.log(isValid); 

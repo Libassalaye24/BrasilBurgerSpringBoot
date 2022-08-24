@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org/">
-  <head th:replace="fragments/base :: head">
-   
-  </head>
-  <body>
+
+<head th:replace="fragments/base :: head">
+
+</head>
+
+<body>
     <!-- header section starts  -->
 
     <header id="header none" class="header" th:replace="fragments/base :: header">
-     
-    </header>
 
+    </header>
+    <style>
+        .active {
+            background-color: inherit;
+            color: white;
+        }
+        
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+            background-color: #FFD800;
+            color: black;
+        }
+    </style>
     <!-- header section ends  -->
 
     <!-- liste section -->
@@ -21,84 +33,167 @@
 
         <div class="row mb-2">
             <div class="col-md-8 ">
-                <a name="" id="" style="margin-bottom: -51px;" class="btn" th:href="@{/complement-add}" role="button">Ajouter <i class="fas fa-plus "></i></a>
+                <a name="" id=""  class="btn" th:href="@{/complement-add}"
+                    role="button">Ajouter <i class="fas fa-plus "></i></a>
             </div>
-            <div class="col-md-4 ">
-                <div
-                    class="form-filtre ">
-                     <form method="POST" action=""> 
-                    
-                        <label class="mb-2">Filter les complements : </label>
-                        <select class="form-select" id="select-etat dropdown" aria-label="Default select example">
-                            <option value="encours"  data-path="">Type</option>
-                            <option value="valider"   data-path="">boisson</option>
-                            <option value="annuler"  data-path="">frite</option>
-                            <option value="terminer"  data-path="">terminer</option>
-                        </select>
-                    </div>
-                   
-                     </form> 
-                </div>
+            
         </div>
         <div class="div-content" style="overflow-x: auto;">
-            <table class="content-table">
-                <a disabled class="btn" id="check-all">Tout cocher
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                </a>
-                <a id="decheck-all" disabled class="btn" style="margin-left:2%">Tout decocher</a>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nom</th>
-                        <th>Type</th>
-                        <th>Prix(FCFA)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <ul class="nav nav-pills mb-3 ml-auto mr-auto" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="btn nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">FRITE</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="btn nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">BOISSON</button>
+                </li>
+               
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                    tabindex="0">
+                    <table class="content-table">
 
-                <tbody >
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nom</th>
+                                <th>Type</th>
+                                <th>Prix(FCFA)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
 
-                  
-                        <tr th:each="f : ${frites}">
-                            <td>
-                                
-                                    <input type="checkbox"
-                                     name="tabChecks[]" value="" class="pay-check check-one">
-                                
-                            </td>
-                            
-                            <td th:text="${f.libelle}"></td>
-                            <td th:text="${f.type}">
-                               
-                            </td>
-                            <td th:text="${f.prix}">
-                                
-                            </td>
-                            <td>
-                               
+                        <tbody>
+
+
+                            <tr th:each="f : ${frites}">
+                                <td>
+
+                                    <input type="checkbox" name="tabChecks[]" value="" class="pay-check check-one">
+
+                                </td>
+
+                                <td th:text="${f.libelle}"></td>
+                                <td th:text="${f.type}">
+
+                                </td>
+                                <td th:text="${f.prix}">
+
+                                </td>
+                                <td>
+
                                     <a name="" id="" class="btn2" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a name="" id="" class="btn2" href="#" role="button"><i class="fa-solid fa-box-archive"></i></a>
-                               
+                                    <a name="" id="archive" class="btn2" th:value="${f.id}" th:typeC="${f.type}"><i
+                                            class="fa-solid fa-box-archive"></i></a>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <table class="content-table">
+
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom</th>
+                            <th>Taille</th>
+                            <th>Marque</th>
+                            <th>Prix(FCFA)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                  <!--   <tbody>
+                        <tr th:each="b : ${boissons}">
+                            <td>
+                                <input type="checkbox" name="tabChecks[]" value="" class="pay-check check-one">
                             </td>
 
+                            <td th:text="${b.libelle}"></td>
+                            <td th:text="${b.taille.libelle}"></td>
+                            <td th:text="${b.marque.libelle}"></td>
+                            <td th:text="${f.taille.prix}"></td>
+                            <td>
+                                <a name="" id="" class="btn2" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a name="" id="archive" class="btn2" ><i class="fa-solid fa-box-archive"></i></a>
+                            </td>
                         </tr>
-                  
-                    
-                </tbody>
+                    </tbody> -->
 
-
-            </table>
+                </table>
+            </div>
+            </div>
         </div>
-</form>
-    
-</section>
+        </form>
+
+    </section>
     <!-- end liste section -->
     <script th:src="@{js/menu.js}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-       
+      /*   $(document).click(function () {
+            Swal({
+                title: "Archiver complement",
+                text: "Êtes-vous sûr de vouloir archiver cet complement ?",
+                icon: 'warning'
+            })
+        }) */
+        /*  const archiveTab = document.querySelectorAll("[archiver]");
+         console.log(archiveTab);
+         for (const iterator of archiveTab) {
+             iterator.addEventListener("click" , function () {
+                // alert(true);
+                 archiver(iterator.getAttribute("value")+"-"+iterator.getAttribute("typeC"));
+             })
+         } */
+      /*   function archiver(idElement) {
+            console.log(idElement);
+            Swal({
+                title: "Archiver complement",
+                text: "Êtes-vous sûr de vouloir archiver cet complement ?",
+                icon: 'warning',
+                dangerMode: true,
+                buttons: {
+                    cancel: 'Non',
+                    delete: 'Oui'
+                }
+            }).then(function (willDelete) {
+                if (willDelete) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/complement-archive/" + idElement,
+                        data: $(this).serialize(),
+                        success: function (msg) {
+                            alert("success");
+                        },
+                        error: function () {
+                            $('.loaderMessage').removeClass('is-active');
+                            swal({ title: "D&eacute;sol&eacute;", text: "Une erreur est survenue veuillez contacter l'administrateur", imageUrl: 'images/icones/error.png', html: true });
+                        }
+                    });
+                } else {
+                    Swal.close();
+                }
+            });
+        } */
     </script>
-  </body>
+</body>
+
 </html>

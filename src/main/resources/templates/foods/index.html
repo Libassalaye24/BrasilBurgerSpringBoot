@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head"> </head>
+  <body>
+    <!-- header section starts  -->
+
+    <header
+      id="header none"
+      class="header"
+      th:replace="fragments/base :: header"
+    ></header>
+    <style>
+        .active {
+            background-color: inherit;
+            color: white;
+        }
+        
+
+
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+            background-color: #FFD800;
+            color: black;
+        }
+    </style>
+    <!-- liste section -->
+    <section class="popular" id="popular">
+      <div class="heading">
+        <span>Liste des produits</span>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-6 ">
+        </div>
+      <div class="col-md-6 ">
+        <a name="" id=""  class="btn mr-auto float-end" th:href="@{/food-add}" role="button">Ajouter <i class="fas fa-plus "></i></a>
+      </div>  
+      </div>
+      <div class="div-content" >
+      <ul class="nav nav-pills mb-3 ml-auto mr-auto" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="btn nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">BURGER</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="btn nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">MENU</button>
+        </li>
+        
+      </ul>
+    
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            
+                <table class="content-table" style="overflow-x: auto;">
+                 
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>image</th>
+                            <th>Nom</th>
+                            <th>Prix(FCFA)</th>
+                            <th>Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody >
+    
+                      
+                            <tr th:each="b : ${burgers}">
+                                <td>
+                                    
+                                        <input type="checkbox"
+                                         name="tabChecks[]" value="" class="pay-check check-one">
+                                    
+                                </td>
+                                
+                                <td>
+                                    <img th:src="@{/img/foods/food-4.png}" class="img-fluid rounded-top" alt="food" style="width:55px;height:55px">
+                                </td>
+                                <td th:text="${b.nom}"></td>
+                                <td th:text="${b.prix}"></td>
+                                <td th:text="${b.type}"></td>
+                                <td>
+                                   
+                                        <a name="" id="" class="btn2" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a name="" id="" class="btn2" href="#" role="button"><i class="fa-solid fa-box-archive"></i></a>
+                                   
+                                </td>
+    
+                            </tr>
+                      
+                        
+                    </tbody>
+    
+    
+                </table>
+          
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+          
+            <table class="content-table">
+              
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>image</th>
+                        <th>Nom</th>
+                        <th>Prix(FCFA)</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody >
+
+                  
+                        <tr th:each="b : ${burgers}">
+                            <td>
+                                
+                                    <input type="checkbox"
+                                     name="tabChecks[]" value="" class="pay-check check-one">
+                                
+                            </td>
+                            
+                            <td>
+                                <img th:src="@{/img/foods/food-4.png}" class="img-fluid rounded-top" alt="food" style="width:55px;height:55px">
+                            </td>
+                            <td th:text="${b.nom}"></td>
+                            <td th:text="${b.prix}"></td>
+                            <td th:text="${b.type}"></td>
+                            <td>
+                               
+                                    <a name="" id="" class="btn2" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a name="" id="" class="btn2" href="#" role="button"><i class="fa-solid fa-box-archive"></i></a>
+                               
+                            </td>
+
+                        </tr>
+                  
+                    
+                </tbody>
+
+
+            </table>
+      
+        </div>
+       
+       
+      </div>
+    </div>
+    </section>
+    <!-- end liste section -->
+    <script th:src="@{js/menu.js}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

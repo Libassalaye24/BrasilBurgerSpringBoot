@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.brasil.burger.brasilburger.models.Burger;
 import com.brasil.burger.brasilburger.models.Menu;
+import com.brasil.burger.brasilburger.models.Taille;
 import com.brasil.burger.brasilburger.services.ComplementsService;
 import com.brasil.burger.brasilburger.services.FoodService;
 
@@ -23,6 +24,8 @@ import com.brasil.burger.brasilburger.services.FoodService;
 public class FoodController {
     @Autowired
     private FoodService foodService;
+    @Autowired
+    private ComplementsService complementService;
 
     @GetMapping("/food-liste")
     public String listBurgers(Model model){
@@ -30,15 +33,27 @@ public class FoodController {
         List<Burger> burgers = foodService.findAllBurgers();
         model.addAttribute("menus",menus);
         model.addAttribute("burgers",burgers);
-        return "foods/liste";
+        return "foods/index";
     }
+  /*   @GetMapping("/foods-liste")
+    public String allFoods(Model model){
+        List<Menu> menus = foodService.findAllMenus();
+        List<Burger> burgers = foodService.findAllBurgers();
+        model.addAttribute("menus",menus);
+        model.addAttribute("burgers",burgers);
+        return "foods/index";
+    } */
 
     @GetMapping("/food-add")
     public String viewAddFood(Model model){
         Menu menu = new Menu();
         Burger burger = new Burger();
+        List<Taille> tailles = complementService.findAllTailles();
+        List<Burger> burgers = foodService.findAllBurgers();
         model.addAttribute("menu",menu);
         model.addAttribute("burger",burger);
+        model.addAttribute("tailles", tailles);
+        model.addAttribute("burgers",burgers);
         return "foods/add";
     }
 

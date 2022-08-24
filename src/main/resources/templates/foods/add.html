@@ -8,11 +8,39 @@
       class="header"
       th:replace="fragments/base :: header"
     ></header>
+    <style>
+      .active {
+          background-color: inherit;
+          color: white;
+      }
+      
+
+
+      .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+          background-color: #FFD800;
+          color: black;
+      }
+  </style>
     <!-- header section end  -->
     <!-- start modal -->
+   
     <div class="body">
       <div class="container">
+        <ul class="nav nav-pills mb-3 ml-auto mr-auto" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="btn nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">BURGER</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="btn nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">MENU</button>
+          </li>
+          
+         
+        </ul>
         <div class="card card-add p-5">
+        
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+        
           <!-- form 1 burger -->
           <form
             id="form"
@@ -20,7 +48,7 @@
             th:object="${burger}"
             novalidate
           >
-            <div class="row mb-3">
+         <!--    <div class="row mb-3">
               <div class="col-md-12">
                 <div class="mb-3">
                   <label for="" class="form-label">Type</label>
@@ -41,7 +69,7 @@
                   ></div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="row mb-3">
               <div class="col-md-6">
@@ -133,59 +161,57 @@
             </div>
           </form>
           <!-- form1 burger end -->
-
+        </div>
+        
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
           <!-- form 2 menu start -->
-
           <form
             id="form2"
             th:object="${menu}"
-            style="display: none"
             class="needs-validation"
             novalidate
           >
-            <div class="row mb-3">
-              <div class="col-md-12">
-                <div class="mb-3">
-                  <label for="" class="form-label">Type</label>
-                  <select
-                    class="form-control"
-                    th:field="*{type}"
-                    onclick="handleClick(this)"
-                    name=""
-                    id="type"
-                  >
-                    <option value="0">Veillez selectioner le type</option>
-                    <option value="burger">Burger</option>
-                    <option selected="selected" value="menu">Menu</option>
-                  </select>
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  ></div>
-                </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="" class="form-label">Nom</label>
+                <input
+                  type="text"
+                  th:field="*{nom}"
+                  class="form-control"
+                  name=""
+                  id="nom"
+                  aria-describedby="helpId"
+                  placeholder=""
+                />
+                <div
+                  id="validationServerUsernameFeedback"
+                  class="invalid-feedback"
+                ></div>
               </div>
             </div>
+           <div class="col-md-6">
+            <div class="mb-3" id="parent">
+              <label for="" class="form-label">Image</label>
+              <input
+                type="file"
+                class="form-control"
+                name="file"
+                id="image"
+                placeholder=""
+                aria-describedby="fileHelpId"
+              />
+              <div
+                id="validationServerUsernameFeedback"
+                class="invalid-feedback"
+              ></div>
+            </div>
+           </div>
+          </div>
 
             <div class="row mb-3">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="" class="form-label">Nom</label>
-                  <input
-                    type="text"
-                    th:field="*{nom}"
-                    class="form-control"
-                    name=""
-                    id="nom"
-                    aria-describedby="helpId"
-                    placeholder=""
-                  />
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  ></div>
-                </div>
-              </div>
-              <div class="col-md-6">
+              
+              <div class="col-md-12">
                 <div class="mb-3">
                   <label for="" class="form-label">Description</label>
                   <input
@@ -204,30 +230,90 @@
                 </div>
               </div>
             </div>
+
             <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="" class="form-label">Burgers</label>
-                <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                    <option value="AL">Alabama</option>
-                      ...
-                    <option value="WY">Wyoming</option>
-                  </select>
+              <label for="" class="form-label">Choisir les burgers du menu</label>
+              <div class="col-md-6" th:each="bm : ${burgers}">
+
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                        
+                          <input type="text" style="background-color: #666;"
+                            class="form-control" th:value="${bm.nom}" disabled name="" id="" aria-describedby="helpId" placeholder="">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                         
+                          <input type="number"
+                            class="form-control" name="quantiteBurger[]"  id="" aria-describedby="helpId"  th:placeholder="'quantite '+${bm.nom}">
+                          <small id="helpId" class="form-text text-muted">Help text</small>
+                        </div>
+                      </div>
+                  </div>
+                
+              </div>
+              <!-- <div class="col-md-6">
+                <label for="" class="form-label">Les Burgers du Menu</label>
+                <select name="brugers_menu[]" id="burger" multiple>
+                  <option th:each="bm : ${burgers}" th:value="${bm.id}" th:text="${bm.nom}"></option>
+                </select>
               </div>
               <div class="col-md-6">
-                <div class="mb-3" id="parent">
-                  <label for="" class="form-label">Image</label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    name="file"
-                    id="image"
-                    placeholder=""
-                    aria-describedby="fileHelpId"
+                
+              </div> -->
+            </div>
+            <div class="row mb-3" >
+              <label for="" class="form-label">Choisir les Tailles du Menu</label>
+              <div class="col-md-3" th:each="t : ${tailles}">
+                <div class="card" style="width: 15rem; background-color: #666">
+                  <img
+                    th:src="@{${'img/uploads/'+t.image}}"
+                    class="card-img-top mx-auto d-block mt-2"
+                    style="width: 120px; height: 120px"
                   />
+                  <div class="card-body" style="color: #fff">
+                    <h4 class="card-title" th:text="${t.libelle}"></h4>
+                  </div>
                   <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  ></div>
+                    style="
+                      color: #fff;
+                      margin-top: -10%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                    class="btn-wrapper mb-2"
+                  >
+                    <a
+                      minus
+                      class="btn btn-primary btn-sm text-center moins"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #ffd800;
+                        color: black;
+                      "
+                    >
+                      <i class="fas fa-minus"></i>
+                    </a>
+                    <span class="p-2" value="0">0</span>
+                    <a
+                      plus
+                      class="btn btn-primary btn-sm text-center plus"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #ffd800;
+                        color: black;
+                      "
+                    >
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -246,10 +332,14 @@
             </div>
           </form>
           <!-- form 2 menu end  -->
+          
+        </div>
+        </div>
         </div>
       </div>
     </div>
     <!-- end modal -->
+   
     <!-- footer -->
     <script th:src="@{js/menu.js}"></script>
     <script th:src="@{js/food.js}"></script>
@@ -266,9 +356,38 @@
 
     <!-- footer -->
     <script>
-        $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+      const plusAll = document.querySelectorAll("[plus]");
+      const minusAll = document.querySelectorAll("[minus]");
+
+      for (const iterator of plusAll) {
+        let iclick = 0;
+        iterator.addEventListener("click", function (e) {
+          iclick = iclick + 1;
+          // alert(e.target)
+          const parentElement = this.parentElement;
+          const span = parentElement.children;
+          span[1].setAttribute("value", parseInt(span[1].getAttribute("value")) + 1);
+          span[1].innerHTML =  span[1].getAttribute("value");
+          console.log(span[1]);
+        });
+      }
+
+      for (const iterator of minusAll) {
+        iterator.addEventListener("click", function (e) {
+          const parentElement = this.parentElement;
+          const span = parentElement.children;
+          let value = span[1].getAttribute("value");
+          if (value != 0) {
+            span[1].setAttribute("value", value - 1);
+            span[1].innerHTML = span[1].getAttribute("value");
+            console.log(span[1]);
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        $(".js-example-basic-multiple").select2();
+      });
       $("#form").on("submit", function (e) {
         var nom = $("#nom").val();
         var description = $("#description").val();

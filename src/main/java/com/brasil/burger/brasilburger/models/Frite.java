@@ -25,10 +25,12 @@ public class Frite {
     private Integer prix;
     private String image;
     private String type;
-
+    private Boolean etat;
     @OneToMany(mappedBy = "frite")
     private List<CommandeFrites> commandeFrites = new ArrayList<>();
 
+    @OneToMany(mappedBy = "frite")
+    private List<MenusFrites> menuTailles = new ArrayList<>();
 
 
 }

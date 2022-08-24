@@ -26,4 +26,8 @@ public class Taille {
 
     @OneToMany(mappedBy = "taille")
     private List<MenuTaille> menuTailles = new ArrayList<>();
+
+    private String image;
+    private String type;
+    
 }
