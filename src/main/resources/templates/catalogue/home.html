@@ -116,14 +116,45 @@
 		  </form>
 		
 		<div class="box-container" id="food-container">
+			
+				<div class="box" data-aos="fade-up" data-aos-duration="3000" th:each=" burger : ${burgers}">
+					<div class="image">
+						<img th:src="@{'img/foods/'+${burger.image}}" class="animate__backInUp" alt="">
+					</div>
+					<div class="content">
 
-				<div class="box" >
+						<h3 th:text="${burger.nom}">nom</h3>
+
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star-half-alt"></i>
+							<span>
+								(50)
+							</span>
+						</div>
+						
+						<div class="price" th:text="${burger.prix}">
+						prix	FCFA
+						</div>
+
+						<a class="btn" th:href="@{'/produit-details-'+${burger.type}+'-'+${burger.id}}">voir details</a>
+						<a type="button" addPanier2 th:data-id="${burger.id}" th:data-type="${burger.type}" id="addInPanier" class="btn add-panier">
+							<i class="fa-solid fa-cart-plus"></i>
+							ajouter
+						</a>
+					</div>
+				</div>
+
+				<div data-aos="fade-up" data-aos-duration="3000" class="box" th:each=" menu : ${menus}">
 					<div class="image">
 						<img th:src="@{${'img/foods/food-4.png'}}" class="animate__backInUp" alt="">
 					</div>
 					<div class="content">
 
-						<h3 >nom</h3>
+						<h3 th:text="${menu.nom}">nom</h3>
 
 						<div class="stars">
 							<i class="fas fa-star"></i>
@@ -140,8 +171,8 @@
 						prix	FCFA
 						</div>
 
-						<a href="" class="btn">voir details</a>
-						<a href="" id="" data-id="" data-nom="" data-image="" data-prix="" data-type="" class="btn add-panier">
+						<a th:href="@{'/produit-details-'+${menu.type}+'-'+${menu.id}}" class="btn">voir details</a>
+						<a type="button" addPanier2 th:data-id="${menu.id}" th:data-type="${menu.type}" id="addInPanier" class="btn add-panier">
 							<i class="fa-solid fa-cart-plus"></i>
 							ajouter
 						</a>
@@ -162,6 +193,7 @@
     <div th:replace="fragments/base :: footer"></div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script th:src="@{js/catalogue.js}"></script>
+	<script th:src="@{js/panier.js}"></script>
 	<script th:src="@{js/testPanier.js}"></script>
 	
 </body>

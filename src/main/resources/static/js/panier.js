@@ -1,11 +1,72 @@
 
+let panier = [];
+
+if (localStorage.getItem("panier")) {
+  panier = JSON.parse(localStorage.getItem("panier"));
+}
+function checkFood(id){
+  panier.forEach(element => {
+    if (element.id == id)  {
+        return true;
+    }else{
+      return false;
+    }
+  });
+}
+function addInPanier(food)
+{
+  const check = panier.find(product => product.id === food.id);
+  let numberClick = 0;
+  if (check == undefined) {
+    food.quantity = 1;
+    panier.push(
+      food
+     );
+  }else{
+    check.quantity = check.quantity + 1;
+  }
+  
+ // console.log(check);
+
+  console.log(panier);
+
+  localStorage.setItem("panier", JSON.stringify(panier));
+  localStorage.setItem("count" , panier.length);
+}
+function removeInPanier(food , index) {
+  const check = panier.find(product => product.id === food.id);
+ 
+  if (check.quantity > 1) {
+    check.quantity = check.quantity - 1;
+  }else if(check.quantity == 1){
+      panier.splice(index , 1);
+  }
+  localStorage.setItem("panier", JSON.stringify(panier));
+  localStorage.setItem("count" , panier.length);
+}
+function deleteInPanier(index ) {
+ 
+  panier.splice(index , 1);
+  
+  localStorage.setItem("panier", JSON.stringify(panier));
+  localStorage.setItem("count" , panier.length);
+}
 const panierContainer = document.getElementById("panier-container");
+const subtotal= document.getElementById("subtotal");
+const alltotal= document.getElementById("total");
+if (alltotal) {
+  alltotal.style.color = "#FFF";
+}
+if (subtotal) {
+  subtotal.style.color = "#FFF";
+}
+let total = 0;
 function showPanier(params) {
     let listPanier = [];
     listPanier = JSON.parse(localStorage.getItem("panier"));
 
     Array(listPanier).forEach(element => {
-        element.forEach(e => {
+        element.forEach((e ,index) => {
             const box = document.createElement("div");
             box.classList.add("box");
 
@@ -17,7 +78,7 @@ function showPanier(params) {
             a_remove.appendChild(fas_remove);
 
             const img = document.createElement("img");
-            img.src="img/foods/food-4.png";
+            img.src="img/foods/"+e.image;
 
             const h3 = document.createElement("h3");
             h3.innerHTML = `${e.nom}`;
@@ -45,16 +106,36 @@ function showPanier(params) {
 
             a_plus.addEventListener("click" , function () {
                 addInPanier(e);
-            })
+                location.reload();
+            });
+
+            a_minus.addEventListener("click" , function () {
+              removeInPanier(e ,index);
+              location.reload();
+            });
+
+            a_remove.addEventListener("click" , function () {
+              deleteInPanier(index);
+              location.reload();
+            });
+
             const br = document.createElement("br");
 
             const span = document.createElement("span");
-            span.innerHTML = "prix : ";
+            span.innerHTML = "prix unitaire: ";
            
             const spanPrice = document.createElement("span");
             spanPrice.classList.add("price");
             spanPrice.innerHTML = `${e.prix} fcfa`;
 
+            const br2 = document.createElement("br");
+
+            const span2p = document.createElement("span");
+            span2p.innerHTML = "prix total : ";
+           
+            const spanPrice2 = document.createElement("span");
+            spanPrice2.classList.add("price");
+            spanPrice2.innerHTML = `${e.prix * e.quantity} fcfa`;
 
             const contentDiv = document.createElement("div");
             contentDiv.classList.add("content");
@@ -67,49 +148,24 @@ function showPanier(params) {
             contentDiv.appendChild(br);
             contentDiv.appendChild(span);
             contentDiv.appendChild(spanPrice);
+            contentDiv.appendChild(br2);
+            contentDiv.appendChild(span2p);
+            contentDiv.appendChild(spanPrice2);
 
             box.appendChild(a_remove);
             box.appendChild(img);
             box.appendChild(contentDiv);
-
+            total += e.prix * e.quantity;
+            if (alltotal && subtotal) {
+              alltotal.innerHTML = total + " FCFA";
+              subtotal.innerHTML = total + " FCFA";
+            }
             panierContainer.appendChild(box);
         })
     });
 }
 
+if (panierContainer) {
+  
 showPanier();
-
-`
-
-<div class="box">
-							
-<a class="a-remove" href="">
-    <i class="fas fa-times"></i>
-<a/>
-
-    <img th:src="@{img/foods/food-4.png}" alt="">
-    <div class="content">
-        <h3>Nom food</h3>
-        <span>
-            quantite :
-        </span>
-        <a href="" class="btn-panier">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-        </a>
-        <span class="number">1</span>
-        <a href="" class="btn-panier">
-            <i class="fa fa-minus" aria-hidden="true"></i>
-        </a>
-        <br>
-        <span>
-            prix :
-        </span>
-
-        <span class="price">
-            1200 fcfa
-        </span>
-    
-
-    </div>
-</div>
-`
+}

@@ -197,7 +197,7 @@
                 type="file"
                 class="form-control"
                 name="file"
-                id="image"
+                id="imageMenu"
                 placeholder=""
                 aria-describedby="fileHelpId"
               />
@@ -233,37 +233,65 @@
 
             <div class="row mb-3">
               <label for="" class="form-label">Choisir les burgers du menu</label>
-              <div class="col-md-6" th:each="bm : ${burgers}">
+            <!--   <div class="col-md-6" th:each="bm : ${burgers}"> -->
 
                   <div class="row">
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                        
-                          <input type="text" style="background-color: #666;"
-                            class="form-control" th:value="${bm.nom}" disabled name="" id="" aria-describedby="helpId" placeholder="">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="mb-3">
-                         
-                          <input type="number"
-                            class="form-control" name="quantiteBurger[]"  id="" aria-describedby="helpId"  th:placeholder="'quantite '+${bm.nom}">
-                          <small id="helpId" class="form-text text-muted">Help text</small>
+                    
+                      <div class="col-md-2 mb-4" th:each="bm : ${burgers}">
+                        <div class="card" style="width: 15rem; background-color: #666">
+                          <img
+                            th:src="@{${'img/foods/'+bm.image}}"
+                            class="card-img-top mx-auto d-block mt-2"
+                            style="width: 120px; height: 120px"
+                          />
+                          <div class="card-body" style="color: #fff">
+                            <h4 class="card-title" th:text="${bm.nom}"></h4>
+                          </div>
+                          <div
+                            style="
+                              color: #fff;
+                              margin-top: -10%;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                            "
+                            class="btn-wrapper mb-2"
+                          >
+                            <a
+                              minus
+                              class="btn btn-primary btn-sm text-center moins"
+                              style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: #ffd800;
+                                color: black;
+                              "
+                            >
+                              <i class="fas fa-minus"></i>
+                            </a>
+                            <input type="hidden" th:data-id="'burger'+${bm.id}" id="quantiteBurger" name="quantiteBurger[]">
+                            <span spanQburger class="p-2" value="0">0</span>
+                            <a
+                              plus
+                              class="btn btn-primary btn-sm text-center plus"
+                              style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: #ffd800;
+                                color: black;
+                              "
+                            >
+                              <i class="fas fa-plus"></i>
+                            </a>
+                          </div>
                         </div>
                       </div>
                   </div>
                 
-              </div>
-              <!-- <div class="col-md-6">
-                <label for="" class="form-label">Les Burgers du Menu</label>
-                <select name="brugers_menu[]" id="burger" multiple>
-                  <option th:each="bm : ${burgers}" th:value="${bm.id}" th:text="${bm.nom}"></option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                
-              </div> -->
             </div>
+            <!-- tailles menu -->
             <div class="row mb-3" >
               <label for="" class="form-label">Choisir les Tailles du Menu</label>
               <div class="col-md-3" th:each="t : ${tailles}">
@@ -299,7 +327,8 @@
                     >
                       <i class="fas fa-minus"></i>
                     </a>
-                    <span class="p-2" value="0">0</span>
+                    <input type="hidden" th:data-id="'taille'+${t.id}" id="quantiteTaille" name="quantiteTaille[]">
+                    <span spanQTaille class="p-2" value="0">0</span>
                     <a
                       plus
                       class="btn btn-primary btn-sm text-center plus"
@@ -317,6 +346,66 @@
                 </div>
               </div>
             </div>
+            <!-- fin taille menu -->
+
+            <!-- debut frite menu -->
+
+            <div class="row mb-3" >
+              <label for="" class="form-label">Choisir les Frites du Menu</label>
+              <div class="col-md-3" th:each="ft : ${frites}">
+                <div class="card" style="width: 15rem; background-color: #666">
+                  <img
+                    th:src="@{${'img/uploads/'+ft.image}}"
+                    class="card-img-top mx-auto d-block mt-2"
+                    style="width: 120px; height: 120px"
+                  />
+                  <div class="card-body" style="color: #fff">
+                    <h4 class="card-title" th:text="${ft.libelle}"></h4>
+                  </div>
+                  <div
+                    style="
+                      color: #fff;
+                      margin-top: -10%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    "
+                    class="btn-wrapper mb-2"
+                  >
+                    <a
+                      minus
+                      class="btn btn-primary btn-sm text-center moins"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #ffd800;
+                        color: black;
+                      "
+                    >
+                      <i class="fas fa-minus"></i>
+                    </a>
+                    <input type="hidden" th:data-id="'frite'+${ft.id}" id="quantiteFrite" name="quantiteFrite[]">
+                    <span spanQFrite class="p-2" value="0">0</span>
+                    <a
+                      plus
+                      class="btn btn-primary btn-sm text-center plus"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #ffd800;
+                        color: black;
+                      "
+                    >
+                      <i class="fas fa-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- fin frite menu -->
             <div class="row">
               <div class="col-md-6">
                 <a
@@ -327,7 +416,7 @@
                 >
               </div>
               <div class="col-md-6">
-                <button type="submit" class="btn float-end">Valider</button>
+                <button type="submit" id="form-burger" class="btn float-end">Valider</button>
               </div>
             </div>
           </form>
@@ -359,6 +448,15 @@
       const plusAll = document.querySelectorAll("[plus]");
       const minusAll = document.querySelectorAll("[minus]");
 
+      const spanQburger = document.querySelectorAll("[spanQburger]");
+      const TabQburgers = document.querySelectorAll("#quantiteBurger");
+
+      const spanQTaille = document.querySelectorAll("[spanQTaille]");
+      const TabQTailles = document.querySelectorAll("#quantiteTaille");
+      
+      const spanQFrite = document.querySelectorAll("[spanQFrite]");
+      const TabQFrites = document.querySelectorAll("#quantiteFrite");
+
       for (const iterator of plusAll) {
         let iclick = 0;
         iterator.addEventListener("click", function (e) {
@@ -366,9 +464,9 @@
           // alert(e.target)
           const parentElement = this.parentElement;
           const span = parentElement.children;
-          span[1].setAttribute("value", parseInt(span[1].getAttribute("value")) + 1);
-          span[1].innerHTML =  span[1].getAttribute("value");
-          console.log(span[1]);
+          span[2].setAttribute("value", parseInt(span[2].getAttribute("value")) + 1);
+          span[2].innerHTML =  span[2].getAttribute("value");
+          console.log(span[2]);
         });
       }
 
@@ -376,18 +474,17 @@
         iterator.addEventListener("click", function (e) {
           const parentElement = this.parentElement;
           const span = parentElement.children;
-          let value = span[1].getAttribute("value");
+          let value = span[2].getAttribute("value");
           if (value != 0) {
-            span[1].setAttribute("value", value - 1);
-            span[1].innerHTML = span[1].getAttribute("value");
-            console.log(span[1]);
+            span[2].setAttribute("value", value - 1);
+            span[2].innerHTML = span[2].getAttribute("value");
+            console.log(span[2]);
           }
         });
       }
 
-      $(document).ready(function () {
-        $(".js-example-basic-multiple").select2();
-      });
+   
+    
       $("#form").on("submit", function (e) {
         var nom = $("#nom").val();
         var description = $("#description").val();
@@ -434,33 +531,64 @@
       });
       //
 
-      /*       $('#form2').on('submit', function(e) {
-          var prix = $('#prix');
-          var libelle = $('#libelle').val();
-          var type2 = $('#type2').val();
-          var imageF = $('#imageF').val();
-          var quantiteF = $('#quantiteF').val();
-        //  alert(true)
+       $('#form2').on('submit', function(e) {
+         
           e.preventDefault(); 
+        //burgers
+          TabQburgers.forEach(element => {
+            element.setAttribute("value" , element.getAttribute("data-id"));
+          });
+          for (const iterator of spanQburger) {
+              const parentE = iterator.parentElement;
+              const span = parentE.children;
+              span[1].setAttribute("value" , span[1].getAttribute("value")+"-"+span[2].getAttribute("value"))
+              console.log(span[1].getAttribute("value"));
+          }
+          //
+          //tailles
+          TabQTailles.forEach(element => {
+            element.setAttribute("value" , element.getAttribute("data-id"));
+          });
+          for (const iterator of spanQTaille) {
+              const parentE = iterator.parentElement;
+              const span = parentE.children;
+              span[1].setAttribute("value" , span[1].getAttribute("value")+"-"+span[2].getAttribute("value"))
+              console.log(span[1].getAttribute("value"));
+          }
+           //frites
+          TabQFrites.forEach(element => {
+            element.setAttribute("value" , element.getAttribute("data-id"));
+          });
+          for (const iterator of spanQFrite) {
+              const parentE = iterator.parentElement;
+              const span = parentE.children;
+              span[1].setAttribute("value" , span[1].getAttribute("value")+"-"+span[2].getAttribute("value"))
+              console.log(span[1].getAttribute("value"));
+          }
+          //
+
+
           var $form2 = $(this);
           var formData = new FormData(this);
-         
-            if ( libelle != "" && type2 != "" && imageF != "" && quantiteF != "") {
+          //alert($formData);
+          var imageMenu =  $("#imageMenu").val();
+            if ( imageMenu != "" ) {
               
            
               $.ajax({
               type: "POST",
-              url: "complement-add-frite", //process to mail
+              url: "menu-add", //process to mail
               data: formData,
               mimeType: "multipart/form-data",
               contentType: false,
               cache: false,
               processData: false,
-              success: function(){
+              success: function(msg){
+                alert(msg)
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title: 'Complement ajoute avec succes',
+                  title: 'Menu ajoute avec succes',
                   background : "#000",
                   color : "#fff",
                   showConfirmButton: true,
@@ -468,15 +596,14 @@
                   confirmButtonText: 'OK!'
                 }).then((result) => {
                   if (result.isConfirmed) {
-                      window.location.href = "complement-liste"
+                      window.location.href = "food-liste"
                   }
                 })
               
               }
              });
             }
-  
-      }); */
+            });
     </script>
   </body>
 </html>

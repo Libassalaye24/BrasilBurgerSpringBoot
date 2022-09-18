@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Entity
@@ -18,6 +20,7 @@ public class Marque {
     private Long id;
     private String libelle;
     
+    @JsonBackReference
     @OneToMany(mappedBy = "marque")
     private List<Boisson> boissons;
 }

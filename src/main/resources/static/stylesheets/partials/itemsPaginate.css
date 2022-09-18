@@ -17,29 +17,35 @@
   display: flex;
   padding: 10px 18px;
   text-decoration: none;
-  border: 2px solid #ddd;
+  border-radius: 5px;
 }
 
-/* line 21, ../../sass/partials/itemsPaginate.scss */
+/* line 20, ../../sass/partials/itemsPaginate.scss */
 .pagination a:not(.laquo) {
   color: #000;
 }
 
-/* line 24, ../../sass/partials/itemsPaginate.scss */
+/* line 23, ../../sass/partials/itemsPaginate.scss */
 .laquo {
-  background: #e04218;
+  background: #FFD800;
   color: #fff;
 }
 
-/* line 29, ../../sass/partials/itemsPaginate.scss */
-.pagination .active {
-  background-color: #e04218;
-  color: white;
-  border: 2px solid #e04218;
+/* line 27, ../../sass/partials/itemsPaginate.scss */
+.pagination a:not(.activ) {
+  background-color: #666;
+  border: 2px solid #000;
+  color: #000;
 }
 
-/* line 36, ../../sass/partials/itemsPaginate.scss */
-.pagination a:hover:not(.active) {
-  background-color: #e04218;
+/* line 32, ../../sass/partials/itemsPaginate.scss */
+.activ {
+  background: #FFD800;
+  border: 2px solid #FFD800;
+}
+
+/* line 38, ../../sass/partials/itemsPaginate.scss */
+.pagination a:hover:not(.activ) {
+  background-color: #FFD800;
   color: #fff;
 }

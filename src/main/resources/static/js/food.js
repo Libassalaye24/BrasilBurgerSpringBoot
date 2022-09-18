@@ -8,10 +8,9 @@
  //
  //form  2 frite
 
-/*  const form2 = document.getElementById("form2")
- const imageFrite = document.getElementById("imageF");
- const quantiteFrite = document.getElementById("quantiteF");
- const prix = document.getElementById("prix");
+ const form2 = document.getElementById("form2")
+ const imageMenu = document.getElementById("imageMenu");
+/*  const quantiteFrite = document.getElementById("quantiteF");
  const libelle = document.getElementById("libelle");
  const type2 = document.getElementById("type2"); */
  
@@ -54,6 +53,7 @@
    // Tester si les champs ne sont pas vides
    var bool = false;
    inputArray.forEach((input) => {
+    console.log(input);
      if (input.value.trim() === "") {
        showError(input, `ce champs est obligatoire`);
      } else if (input.value === "0") {
@@ -152,12 +152,12 @@
  });
  
 
- /* form2.addEventListener("submit", function (e) {
+ form2.addEventListener("submit", function (e) {
   // var nb = CheckNumberMatch(nbrEtage);
   e.preventDefault();
   
   isValid = [];
-  checkRequired([imageFrite,quantiteFrite,prix,libelle,type2]);
+  checkRequired([imageMenu]);
  
   
   //console.log(isValid); 
@@ -168,4 +168,4 @@
   }
 
  
-}); */
+});

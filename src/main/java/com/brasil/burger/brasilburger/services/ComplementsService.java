@@ -92,7 +92,9 @@ public class ComplementsService {
     public Boisson findBoissonById(Long id){
         return boissonRepository.findById(id).orElse(null);
     }
-
+    public Boisson findBoissonByTaille(Taille taille){
+        return boissonRepository.findByTaille(taille);
+    }
     public Marque addMarque(Marque marque) {
         try {
             marqueRepository.save(marque);

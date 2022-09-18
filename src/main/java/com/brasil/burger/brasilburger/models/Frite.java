@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Entity
@@ -26,9 +28,12 @@ public class Frite {
     private String image;
     private String type;
     private Boolean etat;
+
+    @JsonBackReference
     @OneToMany(mappedBy = "frite")
     private List<CommandeFrites> commandeFrites = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "frite")
     private List<MenusFrites> menuTailles = new ArrayList<>();
 

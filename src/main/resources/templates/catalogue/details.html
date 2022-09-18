@@ -1,54 +1,328 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns="http://www.thymeleaf.org/">
-<head th:replace="fragments/base :: head">
-    
-</head>
-<body>
+<html lang="en" xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head"> </head>
+  <body>
     <header th:replace="fragments/base :: header"></header>
-  <!-- home section starts  -->
-	<section class="retour" id="">
-		<a href="">
-			<i class="fa-solid fa-reply fa-1x"></i>
-		</a>
-	</section>
-	<section class="home" id="home"></div>
-	<div class="image">
-		<img src="" alt="" class="home-img">
+    <!-- home section starts  -->
+    <style>
+      .retour {
+        color: #ffd800;
+      }
+      .retour:hover {
+        color: #ffd800;
+      }
+    </style>
+    <section class="retour" id="">
+      <a th:href="@{/catalogue}" class="retour">
+        <i class="fa-solid fa-reply fa-1x"></i>
+        catalogue
+      </a>
+    </section>
+    <section class="home" id="home">
+      <div class="image">
+        <img th:src="@{/img/foods/food-4.png}" alt="kkk" class="home-img" />
+      </div>
+      <div class="content">
+        <span th:text="${produit.type} + ' food'">type food</span>
+        <h3 th:text="${produit.nom}">😋</h3>
+        <p
+          th:text="${produit.description} + '.Omnis unde dolores temporibus hic quam debitis tenetur harum nemo..Omnis unde dolores temporibus hic quam debitis tenetur harum nemo..Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.'"
+        ></p>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
 
-	</div>
-	<div class="content">
-		<span>type food</span>
-		<h3>nom
-			😋</h3>
-		<p>
-			
+        <a
+          type="button"
+          addPanier2
+          th:data-id="${produit.id}"
+          th:data-type="${produit.type}"
+          class="btn panier"
+        >
+          <i class="fa-solid fa-cart-plus"></i>
+          ajouter
+        </a>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <label for="" class="form-label">Choisir les Tailles du Menu</label>
+        <div class="row mb-2">
+          <div class="col-md-3" th:each="b : ${boissons}">
+            <div class="card" th:if="${b.taille.type == 'canette'}" style="width: 15rem; background-color: #666">
+              <img
+                th:src="@{'img/uploads/'+${b.image}}"
+                class="card-img-top mx-auto d-block mt-2"
+                style="width: 120px; height: 120px"
+              />
+              <div class="card-body" style="color: #fff">
+                <h4 class="card-title" th:text="${b.libelle}"></h4>
+              </div>
+              <div
+                style="
+                  color: #fff;
+                  margin-top: -10%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+                class="btn-wrapper mb-2"
+              >
+                <a
+                  minus
+                  class="btn btn-primary btn-sm text-center moins"
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #ffd800;
+                    color: black;
+                  "
+                >
+                  <i class="fas fa-minus"></i>
+                </a>
+                <input type="hidden" th:data-id="'taille'+${b.id}" id="quantiteTaille" name="quantiteTaille[]">
+                <span spanQTaille class="p-2" value="0">0</span>
+                <a
+                  plus
+                  class="btn btn-primary btn-sm text-center plus"
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #ffd800;
+                    color: black;
+                  "
+                >
+                  <i class="fas fa-plus"></i>
+                </a>
+              </div>
+            </div>
+          </div>
 
+    </div>
+        <div class="row">
+          <h2 class="text-white">Les burgers du menu</h2>
+          <div th:each=" mb : ${menusBurgers}" class="col-md-6 mt-4">
+            <div class="card" style="width: 18rem; background-color: black">
+              <img
+                style="width: 120px; height: 120px"
+                th:src="@{'img/foods/'+${mb.burger.image}}"
+                class="card-img-top mx-auto"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5
+                  class="card-title text-center text-white"
+                  th:text="${mb.quantite}+' x '+${mb.burger.nom}"
+                >
+                  Card title
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <h2 class="text-white">Les Frites du menu</h2>
+          <div th:each=" mf : ${menusFrites}" class="col-md-6 mt-4">
+            <div class="card" style="width: 18rem; background-color: black">
+              <img
+                style="width: 120px; height: 120px"
+                th:src="@{'img/uploads/'+${mf.frite.image}}"
+                class="card-img-top mx-auto"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5
+                  class="card-title text-center text-white"
+                  th:text="${mf.quantite}+' x '+${mf.frite.libelle}"
+                >
+                  Card title
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-			Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.
-			Omnis unde dolores temporibus hic quam debitis tenetur harum nemo.</p>
-			
+    <div class="">
+      <!-- banner section starts  -->
 
-		<div class="stars">
-			<i class="fas fa-star"></i>
-			<i class="fas fa-star"></i>
-			<i class="fas fa-star"></i>
-			<i class="fas fa-star"></i>
-			<i class="fas fa-star-half-alt"></i>
+      <section class="banner">
+        <div
+          class="row-banner"
+          th:style="'background-image:url(' + @{/img/foods/row-banner.png} + '); background-repeat: no-repeat; background-size: cover; background-position: center;position: relative;height: 45rem;'"
+        >
+          <div class="content">
+            <span>double cheese</span>
+            <h3>burger</h3>
+            <p>with cococola and fries</p>
+            <a href="#" class="btn">order now</a>
+          </div>
+        </div>
+      </section>
 
-		</div>
-	
-		<a href="" class="btn panier">
-			<i class="fa-solid fa-cart-plus"></i>
-			ajouter
-		</a>
-	</div>
+      <!-- banner section ends -->
+      <!-- order section starts  -->
 
+      <section class="order" id="order">
+        <div class="heading">
+          <span>Commandez maintenant</span>
+          <h3>Livraison rapide</h3>
+        </div>
 
-</section>
+        <div class="icons-container">
+          <div class="icons">
+            <img th:src="@{/img/foods/icon-1.png}" alt="" />
+            <h3>7:00am to 10:30pm</h3>
+          </div>
 
+          <div class="icons">
+            <img th:src="@{/img/foods/icon-2.png}" alt="" />
+            <h3>+221 77-809-86-33</h3>
+          </div>
 
+          <div class="icons">
+            <img th:src="@{/img/foods/icon-3.png}" alt="" />
+            <h3>Dakar, Senegal - 400104</h3>
+          </div>
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d63612502.52014224!2d-11.285175924981752!3d13.312969429018338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0xec173c21564c333%3A0x504d9e7bb5384f5a!2sEcole%20221%2C%20Dieuppeul%201%20Villa%20en%20face!3m2!1d14.716926299999999!2d-17.45194!5e0!3m2!1sfr!2ssn!4v1652188228495!5m2!1sfr!2ssn"
+          style="border: 0; width: 100%; height: 400px"
+          allowfullscreen="true"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </section>
 
-    <div th:replace="fragments/base :: footer"></div>
+      <!-- order section ends -->
+      <!-- footer section starts  -->
 
-</body>
+      <section class="footer">
+        <div class="box-container">
+          <div class="box">
+            <h3>Nos Menus</h3>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              Boisson</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              burger</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              frites</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              menus</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              et plus...</a
+            >
+          </div>
+
+          <div class="box">
+            <h3>Liens rapides</h3>
+            <a href="#home">
+              <i class="fas fa-arrow-right"></i>
+              Accueil</a
+            >
+            <a href="#about">
+              <i class="fas fa-arrow-right"></i>
+              Pourquoi?</a
+            >
+            <a href="#popular">
+              <i class="fas fa-arrow-right"></i>
+              Nos Menus</a
+            >
+            <a href="#menu">
+              <i class="fas fa-arrow-right"></i>
+              menu</a
+            >
+            <a href="#order">
+              <i class="fas fa-arrow-right"></i>
+              et plus</a
+            >
+          </div>
+
+          <div class="box">
+            <h3>extra links</h3>
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              my order</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              my account</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              my favorite</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              terms of use</a
+            >
+            <a href="#">
+              <i class="fas fa-arrow-right"></i>
+              privary policy</a
+            >
+          </div>
+
+          <div class="box">
+            <h3>Heures d'ouvertures</h3>
+            <p>lundi : 7:00am a 10:00pm</p>
+            <p>mardi : 7:00am a 10:00pm</p>
+            <p>mercredi : 7:00am a 10:00pm</p>
+            <p>jeudi : 7:00am a 10:00pm</p>
+            <p>vendredi 7:00am a 10:00pm</p>
+            <p>samedi : 7:00am a 10:00pm</p>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fab fa-pinterest"></a>
+          </div>
+
+          <div class="credit">
+            Créé par
+            <span>M. Libasse Laye Mbaye </span>
+            | Tous les droits sont réservés!
+          </div>
+        </div>
+      </section>
+
+      <!-- footer section ends -->
+
+      <script th:src="@{js/menu.js}"></script>
+      <script th:src="@{js/catalogue.js}"></script>
+      <script th:src="@{js/panier.js}"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"
+      ></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <script>
+        AOS.init();
+      </script>
+    </div>
+  </body>
 </html>
