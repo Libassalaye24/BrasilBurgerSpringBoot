@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html 
-xmlns="http://www.thymeleaf.org/"
-
->
+<html xmlns="http://www.thymeleaf.org/"  >
   <head th:fragment="head">
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    
+
     <title>Accueil</title>
     <link
-    type="text/css"
+      type="text/css"
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"
     />
 
     <link
-    type="text/css"
+      type="text/css"
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link
-    type="text/css"
+      type="text/css"
+      href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
       href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
       rel="stylesheet"
     />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"
+    ></script>
     <link
-    type="text/css"
+      type="text/css"
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
       integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -38,18 +42,23 @@ xmlns="http://www.thymeleaf.org/"
       referrerpolicy="no-referrer"
     />
     <link
-    type="text/css"
+      type="text/css"
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link type="text/css"
-
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" 
-      rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
-      crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-      <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
-     <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" th:href="@{stylesheets/screen.css}" />
   </head>
@@ -61,15 +70,15 @@ xmlns="http://www.thymeleaf.org/"
         Brasil<i class="fa-solid fa-burger"></i>Burger
       </a>
 
-      <nav class="navbar">
+      <nav class="navbar" id="authorize">
         <a th:href="@{/catalogue}">Accueil</a>
-       <!--  <a class="" href="">Mes Commandes</a>
-        <a class="a" href="">Food</a> -->
-
-        <a class="a" sec:authorize="hasRole('ADMIN')" th:href="@{/food-liste}">produits</a>
-        <a class="a" sec:authorize="isAuthenticated()" th:href="@{/complement-liste}">Complements</a>
-				<!-- <a class="a" href="">Commandes</a>
-				<a class="a" href="">Tableau de bord</a> -->
+         <!--  <a class="a" sec:authorize="hasRole('ADMIN')" th:href="@{/food-liste}">produits</a>
+          <a class="a" sec:authorize="isAuthenticated()"    th:href="@{/complement-liste}" >Complements</a>
+          <a class="a"  href="">Commandes</a>
+          <a class="a"  href="">Tableau de bord</a>
+          <a class="a"  href="">Tableau de bord</a>
+          <a class="a"  href="">Mes Commandes</a> -->
+        
       </nav>
 
       <div class="icons">
@@ -85,30 +94,33 @@ xmlns="http://www.thymeleaf.org/"
                 }
                 const countPanier = document.getElementById("count-panier");
                 countPanier.innerHTML = intCount;
-                
+
                 console.log(JSON.parse(localStorage.getItem("count")));
               </script>
             </p>
           </div>
         </a>
 
-        <a th:href="@{/logout}">
+        <a th:href="@{/logout}" sec:authorize="isAuthenticated()">
           <div id="cart-btn" class="fa-solid fa-arrow-right-from-bracket"></div>
         </a>
 
-        <a th:href="@{/login}">
+        <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
           <div id="login-btn" class="fas fa-user"></div>
         </a>
       </div>
     </header>
 
     <!-- header section ends  -->
-	
+
     <div class="" th:fragment="footer">
       <!-- banner section starts  -->
 
-      <section class="banner" >
-        <div class="row-banner" th:style="'background-image:url(' + @{/img/foods/row-banner.png} + '); background-repeat: no-repeat; background-size: cover; background-position: center;position: relative;height: 45rem;'">
+      <section class="banner">
+        <div
+          class="row-banner"
+          th:style="'background-image:url(' + @{/img/foods/row-banner.png} + '); background-repeat: no-repeat; background-size: cover; background-position: center;position: relative;height: 45rem;'"
+        >
           <div class="content">
             <span>double cheese</span>
             <h3>burger</h3>
@@ -129,7 +141,7 @@ xmlns="http://www.thymeleaf.org/"
 
         <div class="icons-container">
           <div class="icons">
-            <img th:src="@{img/foods/icon-1.png}"  alt="" />
+            <img th:src="@{img/foods/icon-1.png}" alt="" />
             <h3>7:00am to 10:30pm</h3>
           </div>
 
@@ -260,10 +272,14 @@ xmlns="http://www.thymeleaf.org/"
       <!-- footer section ends -->
 
       <script th:src="@{js/menu.js}"></script>
-      <script th:src="@{js/testPanier.js}"></script>
+      <script th:src="@{js/home.js}"></script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"
+      ></script>
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       <script>

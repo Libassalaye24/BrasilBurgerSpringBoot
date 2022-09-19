@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.brasil.burger.brasilburger.fixtures.FriteFixture;
 import com.brasil.burger.brasilburger.fixtures.TailleFixture;
+import com.brasil.burger.brasilburger.fixtures.UserFixture;
 
 @SpringBootApplication
 public class BrasilburgerApplication implements CommandLineRunner{
@@ -19,10 +20,12 @@ public class BrasilburgerApplication implements CommandLineRunner{
 		
 	}
 
+	@Autowired
+	private UserFixture userFixture;
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
+		//userFixture.loadDefaultAdmin();
 	}
 	
 

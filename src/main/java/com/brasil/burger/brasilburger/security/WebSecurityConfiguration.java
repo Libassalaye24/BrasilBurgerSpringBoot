@@ -1,4 +1,4 @@
-/* package com.brasil.burger.brasilburger.security;
+package com.brasil.burger.brasilburger.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,15 +31,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/catalogue").permitAll()
-        .antMatchers("/").permitAll()
+        .antMatchers("/catalogue","/").permitAll()
         .antMatchers("/login").permitAll()
-        .antMatchers("/panier-list").permitAll()
+        /* .antMatchers("/panier-list").hasAnyRole("CLIENT") */
       //  .antMatchers("/index").permitAll()
-        .antMatchers("/**").hasAuthority("ADMIN").anyRequest()
+        .antMatchers("/food-liste","complement-liste","dashboard","food-add","complement-add").hasAuthority("ADMIN").anyRequest()
         .authenticated().and().csrf().disable().formLogin()
         .loginPage("/login").failureUrl("/login?error=true")
-        .defaultSuccessUrl("/complement-liste")
+        .defaultSuccessUrl("/catalogue")
         .usernameParameter("user_name")
         .passwordParameter("password")
         .and().logout()
@@ -64,4 +63,3 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   BCryptPasswordEncoder encoder() { return new BCryptPasswordEncoder(); }
 
 }
- */

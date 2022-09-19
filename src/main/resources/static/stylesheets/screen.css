@@ -1664,25 +1664,23 @@ section {
   border-radius: 5px;
   width: 50%;
   margin-top: 10%;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color: #fff;
   color: #000;
 }
-/* line 109, ../sass/partials/_form.scss */
+/* line 107, ../sass/partials/_form.scss */
 .container-login .line {
   float: right;
   margin-right: 4%;
   margin-top: 1%;
 }
-/* line 113, ../sass/partials/_form.scss */
+/* line 111, ../sass/partials/_form.scss */
 .container-login .line a {
   color: #e04218;
 }
-/* line 119, ../sass/partials/_form.scss */
+/* line 117, ../sass/partials/_form.scss */
 .container-login .form-control .label {
   color: #ffff;
 }
-/* line 122, ../sass/partials/_form.scss */
+/* line 120, ../sass/partials/_form.scss */
 .container-login .form-control input {
   background-color: #f6f6f6;
   /*  border: 2px solid $colorPrimary   ; */
@@ -1697,61 +1695,61 @@ section {
   font-size: 14px;
 }
 
-/* line 138, ../sass/partials/_form.scss */
+/* line 136, ../sass/partials/_form.scss */
 h2 {
   text-align: center;
   margin: 0 0 20px;
 }
 
-/* line 143, ../sass/partials/_form.scss */
+/* line 141, ../sass/partials/_form.scss */
 .form {
   padding: 30px 40px;
 }
 
-/* line 147, ../sass/partials/_form.scss */
+/* line 145, ../sass/partials/_form.scss */
 .form-control {
   margin-bottom: 8px;
   padding-bottom: 2px;
   position: relative;
 }
-/* line 151, ../sass/partials/_form.scss */
+/* line 149, ../sass/partials/_form.scss */
 .form-control div {
   margin-bottom: 8px;
 }
-/* line 154, ../sass/partials/_form.scss */
+/* line 152, ../sass/partials/_form.scss */
 .form-control ul li {
   color: red;
   font-size: 14px;
 }
 
-/* line 159, ../sass/partials/_form.scss */
+/* line 157, ../sass/partials/_form.scss */
 .color1 {
   color: #e04218;
 }
 
-/* line 162, ../sass/partials/_form.scss */
+/* line 160, ../sass/partials/_form.scss */
 .form-control label, .form-control2 label, .checkbox .check, .checkbox .label, .etu small {
   display: block;
   margin-bottom: 5px;
 }
 
-/* line 166, ../sass/partials/_form.scss */
+/* line 164, ../sass/partials/_form.scss */
 .form-control label {
   color: #777;
 }
 
-/* line 171, ../sass/partials/_form.scss */
+/* line 169, ../sass/partials/_form.scss */
 .form-control .input {
   /*  border-bottom: $colorPrimary 3px solid; */
 }
 
-/* line 175, ../sass/partials/_form.scss */
+/* line 173, ../sass/partials/_form.scss */
 .fc2 {
   display: flex;
   justify-content: space-around;
 }
 
-/* line 179, ../sass/partials/_form.scss */
+/* line 177, ../sass/partials/_form.scss */
 .form-control2 input {
   border: 2px solid #f0f0f0;
   border-radius: 4px;
@@ -1762,12 +1760,12 @@ h2 {
   font-size: 14px;
 }
 
-/* line 189, ../sass/partials/_form.scss */
+/* line 187, ../sass/partials/_form.scss */
 .form-control2 label {
   margin-bottom: 10px;
 }
 
-/* line 193, ../sass/partials/_form.scss */
+/* line 191, ../sass/partials/_form.scss */
 .form-control2 select {
   display: block;
   border: 2px solid #f0f0f0;
@@ -1781,21 +1779,21 @@ h2 {
   margin-left: 4.8%;
 }
 
-/* line 205, ../sass/partials/_form.scss */
+/* line 203, ../sass/partials/_form.scss */
 .checkbox {
   position: relative;
 }
 
-/* line 209, ../sass/partials/_form.scss */
+/* line 207, ../sass/partials/_form.scss */
 form .row {
   display: flex;
 }
-/* line 211, ../sass/partials/_form.scss */
+/* line 209, ../sass/partials/_form.scss */
 form .row .etu {
   flex: 1;
 }
 
-/* line 215, ../sass/partials/_form.scss */
+/* line 213, ../sass/partials/_form.scss */
 .etu .input {
   border: 2px solid #f0f0f0;
   border-radius: 4px;
@@ -1807,60 +1805,60 @@ form .row .etu {
   font-size: 14px;
 }
 
-/* line 226, ../sass/partials/_form.scss */
+/* line 224, ../sass/partials/_form.scss */
 .checkbox .check {
   display: flex;
   margin-top: 2%;
 }
-/* line 229, ../sass/partials/_form.scss */
+/* line 227, ../sass/partials/_form.scss */
 .checkbox .check input {
   margin-left: 1%;
   margin-top: 2px;
 }
-/* line 234, ../sass/partials/_form.scss */
+/* line 232, ../sass/partials/_form.scss */
 .checkbox .check label {
   width: 100%;
   margin-left: 1%;
 }
 
-/* line 243, ../sass/partials/_form.scss */
+/* line 241, ../sass/partials/_form.scss */
 .form-control select {
   border-bottom: #e04218 3px solid;
   outline: 0;
 }
 
-/* line 250, ../sass/partials/_form.scss */
+/* line 248, ../sass/partials/_form.scss */
 .etu select {
   outline: 0;
 }
 
-/* line 254, ../sass/partials/_form.scss */
+/* line 252, ../sass/partials/_form.scss */
 .form-control .input:focus {
   outline: 0;
   border-color: #e04218;
 }
 
-/* line 258, ../sass/partials/_form.scss */
+/* line 256, ../sass/partials/_form.scss */
 .checkbox.success input, .checkbox.error input, .form-control.success input, .form-control.success select {
   border-color: green;
 }
 
-/* line 261, ../sass/partials/_form.scss */
+/* line 259, ../sass/partials/_form.scss */
 .form-control.error select, .form-control.error input {
   border-color: red;
 }
 
-/* line 282, ../sass/partials/_form.scss */
+/* line 280, ../sass/partials/_form.scss */
 .etu.success input {
   border-color: green;
 }
 
-/* line 285, ../sass/partials/_form.scss */
+/* line 283, ../sass/partials/_form.scss */
 .etu.error input {
   border-color: red;
 }
 
-/* line 288, ../sass/partials/_form.scss */
+/* line 286, ../sass/partials/_form.scss */
 .form-control small {
   color: red;
   position: absolute;
@@ -1869,23 +1867,23 @@ form .row .etu {
   visibility: hidden;
 }
 
-/* line 297, ../sass/partials/_form.scss */
+/* line 295, ../sass/partials/_form.scss */
 .etu small {
   color: red;
 }
 
-/* line 301, ../sass/partials/_form.scss */
+/* line 299, ../sass/partials/_form.scss */
 .form-control.error small {
   visibility: visible;
 }
 
-/* line 305, ../sass/partials/_form.scss */
+/* line 303, ../sass/partials/_form.scss */
 .form button {
   cursor: pointer;
-  background-color: #e04218;
-  border: 2px solid #e04218;
+  background-color: #FFD800;
+  border: 2px solid #FFD800;
   border-radius: 4px;
-  color: #fff;
+  color: #000;
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -1893,7 +1891,7 @@ form .row .etu {
   padding: 10px;
   margin-top: 20px;
   width: 30%;
-  box-shadow: #e04218 0px 7px 29px 0px;
+  box-shadow: #ffec43 0px 7px 19px 0px;
 }
 
 /*  .form button:hover{
@@ -1915,14 +1913,14 @@ form .row .etu {
     width: 30%;
     box-shadow: $shadow2;
  } */
-/* line 340, ../sass/partials/_form.scss */
+/* line 338, ../sass/partials/_form.scss */
 .register {
   display: flex;
   justify-content: space-around;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 346, ../sass/partials/_form.scss */
+  /* line 344, ../sass/partials/_form.scss */
   .form button {
     cursor: pointer;
     background-color: #e04218;
@@ -1939,12 +1937,12 @@ form .row .etu {
     box-shadow: #e04218 0px 7px 29px 0px;
   }
 
-  /* line 361, ../sass/partials/_form.scss */
+  /* line 359, ../sass/partials/_form.scss */
   .container-login {
     width: 80%;
     margin-top: 15%;
   }
-  /* line 365, ../sass/partials/_form.scss */
+  /* line 363, ../sass/partials/_form.scss */
   .container-login .form-control .label {
     color: #39ace7;
   }

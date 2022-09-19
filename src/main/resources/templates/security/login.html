@@ -1,41 +1,80 @@
-
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org" >
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-  </head>
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org/">
+  <head th:replace="fragments/base :: head"> </head>
   <body>
-    
-<div class="container">
-    <img th:src="@{/images/bien-test.jpeg}" class="img-responsive center-block" width="300" height="300" alt="Logo"/>
-    <form th:action="@{/login}" method="POST" class="form-signin">
-        <h3 class="form-signin-heading" th:text="Welcome"></h3>
-        <br/>
+    <!-- header section starts  -->
+    <header
+      id="header none"
+      class="header"
+      th:replace="fragments/base :: header"
+    ></header>
+  <body>
+    <div class="body ">
+      <div class="container-login">
+        <div class="card card-add">
+          <div class="alert alert-danger" th:if="${param.error}" role="alert">
+            Email ou mot de passe incorrect, veillez vérifier svp!
+          </div>
+          <form th:action="@{/login}" method="POST" class="form-signin form">
+            <h2
+              class="form-signin-heading text-center text-white"
+              th:text="Bienvenue"
+            ></h2>
+            <div class="row">
+              <div class="mb-3">
+                <label for="" class="form-label">E-mail</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="user_name"
+                  name="user_name"
+                  placeholder="saisir votre adresse email"
+                  aria-describedby="helpId"
+                />
+                <small id="helpId" class="form-text text-muted"></small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3">
+                <label for="" class="form-label">Mot de passe</label>
+                <input
+                  type="password"
+                  th:placeholder="Password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  aria-describedby="helpId"
+                />
+                <small id="helpId" class="form-text text-muted"></small>
+              </div>
+            </div>
 
-        <input type="text" id="user_name" name="user_name" placeholder="User Name"
-               class="form-control"/> <br/>
-        <input type="password" th:placeholder="Password"
-               id="password" name="password" class="form-control"/> <br/>
-
-        <div align="center" th:if="${param.error}">
-            <p style="font-size: 20; color: #FF1C19;">User Name or Password invalid, please verify</p>
+            <button
+              class="btn-login"
+              name="Submit"
+              value="Login"
+              
+              type="Submit"
+              th:text="Login"
+            ></button>
+          </form>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"
-                th:text="Login"></button>
-    </form>
-</div>
+      </div>
+    </div>
 
     <!-- Bootstrap JavaScript Libraries -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

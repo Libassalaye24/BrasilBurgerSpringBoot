@@ -1,4 +1,4 @@
-/* package com.brasil.burger.brasilburger.services;
+package com.brasil.burger.brasilburger.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,4 +35,3 @@ public class MyUserDetailsService implements UserDetailsService {
     }
     
 }
- */

@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -23,8 +28,10 @@ import com.brasil.burger.brasilburger.models.MenuTaille;
 import com.brasil.burger.brasilburger.models.MenusBurgers;
 import com.brasil.burger.brasilburger.models.MenusFrites;
 import com.brasil.burger.brasilburger.models.Taille;
+import com.brasil.burger.brasilburger.models.User;
 import com.brasil.burger.brasilburger.services.ComplementsService;
 import com.brasil.burger.brasilburger.services.FoodService;
+import com.brasil.burger.brasilburger.services.UserService;
 
 import net.bytebuddy.agent.builder.AgentBuilder.InitializationStrategy.SelfInjection.Split;
 
@@ -34,6 +41,8 @@ public class FoodController {
     private FoodService foodService;
     @Autowired
     private ComplementsService complementService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/food-liste")
     public String listBurgers(){
@@ -43,6 +52,14 @@ public class FoodController {
         model.addAttribute("burgers",burgers); */
         return "foods/liste";
     }
+
+    public void getConectted(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        String role = user.getRole().getLibelle();
+        
+    }
+
  
 
     @GetMapping("/food-add")

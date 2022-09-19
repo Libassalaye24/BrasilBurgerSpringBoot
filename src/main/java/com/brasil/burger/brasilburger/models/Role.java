@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 @Entity
@@ -21,6 +23,7 @@ public class Role {
 
     private String libelle;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "role")
     private List<User> users = new ArrayList<>();
 }
